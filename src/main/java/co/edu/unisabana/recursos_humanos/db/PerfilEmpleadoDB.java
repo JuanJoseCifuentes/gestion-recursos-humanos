@@ -1,7 +1,6 @@
 package co.edu.unisabana.recursos_humanos.db;
 
 import lombok.Data;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
