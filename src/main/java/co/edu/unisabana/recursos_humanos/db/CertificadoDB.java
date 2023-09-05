@@ -11,14 +11,14 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "Certificaciones")
-public class CertificacionesDB {
+public class CertificadoDB {
 
     @Id
     @Column
     private int id;
 
     @Column
-    private int id_emlpeado;
+    private int idEmpleado;
 
     @Column
     private String tipo;
@@ -27,14 +27,14 @@ public class CertificacionesDB {
     private String descripcion;
 
     @Column
-    private LocalDateTime fecha_expedicion;
+    private LocalDateTime fechaExpedicion;
 
     @Column
-    private String entidad_expedidora;
+    private String entidadExpedidora;
 
     @Column(name = "Fecha_creacion")
-    private LocalDateTime fecha_creacion;
+    private LocalDateTime fechaCreacion;
 
     @Column(name = "Fecha_actualizacion")
-    private LocalDateTime fecha_actualizacion;
+    private LocalDateTime fechaActualizacion;
 }

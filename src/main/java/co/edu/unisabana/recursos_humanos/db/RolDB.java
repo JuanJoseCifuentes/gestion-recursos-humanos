@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name="Rol")
+@Table(name="rol")
 public class RolDB {
 
     @Id
@@ -21,8 +21,8 @@ public class RolDB {
     private String responsabilidades;
 
     @Column(name = "Fecha_creacion")
-    private LocalDateTime fecha_creacion;
+    private LocalDateTime fechaCreacion;
 
     @Column(name = "Fecha_actualizacion")
-    private LocalDateTime fecha_actualizacion;
+    private LocalDateTime fechaActualizacion;
 }

@@ -18,17 +18,17 @@ public class PerfilEmpleadoDB {
     private int id;
 
     @Column
-    private int id_empleado;
+    private int idEmpleado;
 
     @Column
     private String habilidades;
 
     @Column
-    private int anos_experiencia;
+    private int anosExperiencia;
 
     @Column(name = "Fecha_creacion")
-    private LocalDateTime fecha_creacion;
+    private LocalDateTime fechaCreacion;
 
     @Column(name = "Fecha_actualizacion")
-    private LocalDateTime fecha_actualizacion;
+    private LocalDateTime fechaActualizacion;
 }

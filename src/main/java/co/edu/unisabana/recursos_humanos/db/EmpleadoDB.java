@@ -26,7 +26,7 @@ public class EmpleadoDB {
     private int telefono;
 
     @Column(name = "ID_rol")
-    private int id_rol;
+    private int idRol;
 
     @Column(name = "Direccion")
     private String direccion;
@@ -35,9 +35,9 @@ public class EmpleadoDB {
     private int cedula;
 
     @Column(name = "Fecha_creacion")
-    private LocalDateTime fecha_creacion;
+    private LocalDateTime fechaCreacion;
 
     @Column(name = "Fecha_actualizacion")
-    private LocalDateTime fecha_actualizacion;
+    private LocalDateTime fechaActualizacion;
 
 }
