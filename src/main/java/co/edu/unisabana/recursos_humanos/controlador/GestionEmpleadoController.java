@@ -1,5 +1,6 @@
 package co.edu.unisabana.recursos_humanos.controlador;
 
+import co.edu.unisabana.recursos_humanos.controlador.dto.EmpleadoDTO;
 import co.edu.unisabana.recursos_humanos.controlador.dto.Respuesta;
 import co.edu.unisabana.recursos_humanos.db.entidad.EmpleadoDB;
 import co.edu.unisabana.recursos_humanos.logica.LogicaEmpleado;
@@ -27,9 +28,9 @@ public class GestionEmpleadoController {
     }
 
     @PostMapping(path = "/empleado/crear")
-    public Respuesta crearEmpleado(@RequestBody EmpleadoDB empleado) {
+    public Respuesta crearEmpleado(@RequestBody EmpleadoDTO empleadoDTO) {
         try {
-            logica.crearEmpleado(empleado);
+            logica.crearEmpleado(empleadoDTO);
             return new Respuesta("Exitoso", "El empleado se ha guardado correctamente.");
         } catch (Exception e) {
             return new Respuesta("Fallido", "Algo ha salido mal. No se ha podido guardar el empleado.");
@@ -37,7 +38,7 @@ public class GestionEmpleadoController {
     }
 
     @PutMapping(path = "/empleado/actualizar/informacion_personal")
-    public Respuesta actualizarInformacionPersonalEmpleado(@RequestBody EmpleadoDB nuevoEmpleado){
+    public Respuesta actualizarInformacionPersonalEmpleado(@RequestBody EmpleadoDTO nuevoEmpleado){
         try {
             logica.modificarInformacionPersonalEmpleado(nuevoEmpleado.getId(), nuevoEmpleado);
             return new Respuesta("Exitoso", "La informacion personal del empleado se ha actualizado correctamente.");

@@ -1,5 +1,6 @@
 package co.edu.unisabana.recursos_humanos.logica;
 
+import co.edu.unisabana.recursos_humanos.controlador.dto.EmpleadoDTO;
 import co.edu.unisabana.recursos_humanos.db.entidad.EmpleadoDB;
 import co.edu.unisabana.recursos_humanos.db.EmpleadoRepository;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,17 @@ public class LogicaEmpleado {
         }
     }
 
-    public void crearEmpleado(EmpleadoDB empleado) {
+    public void crearEmpleado(EmpleadoDTO empleadoDTO) {
+
+        EmpleadoDB empleado = new EmpleadoDB();
+        empleado.setId(empleadoDTO.getId());
+        empleado.setNombre(empleadoDTO.getNombre());
+        empleado.setEdad(empleadoDTO.getEdad());
+        empleado.setCorreo(empleadoDTO.getCorreo());
+        empleado.setTelefono(empleadoDTO.getTelefono());
+        empleado.setIdRol(empleadoDTO.getIdRol());
+        empleado.setDireccion(empleadoDTO.getDireccion());
+        empleado.setCedula(empleadoDTO.getCedula());
         empleado.setFechaActualizacion(LocalDateTime.now());
         empleado.setFechaCreacion(LocalDateTime.now());
         empleadoRepository.save(empleado);
@@ -39,7 +50,7 @@ public class LogicaEmpleado {
         empleadoRepository.deleteById(id);
     }
 
-    public void modificarInformacionPersonalEmpleado(int id, EmpleadoDB nuevoEmpleado) {
+    public void modificarInformacionPersonalEmpleado(int id, EmpleadoDTO nuevoEmpleado) {
         EmpleadoDB empleadoActualizar = empleadoRepository.getReferenceById(id);
         empleadoActualizar.setNombre(nuevoEmpleado.getNombre());
         empleadoActualizar.setEdad(nuevoEmpleado.getEdad());
