@@ -1,6 +1,6 @@
 package co.edu.unisabana.recursos_humanos.logica;
 
-import co.edu.unisabana.recursos_humanos.db.CertificadoDB;
+import co.edu.unisabana.recursos_humanos.db.entidad.CertificadoDB;
 import co.edu.unisabana.recursos_humanos.db.CertificadoRepository;
 import org.springframework.stereotype.Service;
 

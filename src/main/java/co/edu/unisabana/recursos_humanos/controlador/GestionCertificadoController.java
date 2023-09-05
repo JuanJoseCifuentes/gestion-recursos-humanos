@@ -1,7 +1,7 @@
 package co.edu.unisabana.recursos_humanos.controlador;
 
 import co.edu.unisabana.recursos_humanos.controlador.dto.Respuesta;
-import co.edu.unisabana.recursos_humanos.db.CertificadoDB;
+import co.edu.unisabana.recursos_humanos.db.entidad.CertificadoDB;
 import co.edu.unisabana.recursos_humanos.logica.LogicaCerticado;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

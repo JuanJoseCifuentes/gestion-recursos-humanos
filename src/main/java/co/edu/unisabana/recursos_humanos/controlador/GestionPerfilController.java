@@ -1,7 +1,7 @@
 package co.edu.unisabana.recursos_humanos.controlador;
 
 import co.edu.unisabana.recursos_humanos.controlador.dto.Respuesta;
-import co.edu.unisabana.recursos_humanos.db.PerfilEmpleadoDB;
+import co.edu.unisabana.recursos_humanos.db.entidad.PerfilEmpleadoDB;
 import co.edu.unisabana.recursos_humanos.logica.LogicaPerfil;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

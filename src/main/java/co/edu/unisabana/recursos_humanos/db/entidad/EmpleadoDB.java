@@ -1,4 +1,4 @@
-package co.edu.unisabana.recursos_humanos.db;
+package co.edu.unisabana.recursos_humanos.db.entidad;
 
 import lombok.Data;
 

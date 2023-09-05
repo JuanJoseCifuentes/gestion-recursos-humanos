@@ -1,6 +1,6 @@
 package co.edu.unisabana.recursos_humanos.logica;
 
-import co.edu.unisabana.recursos_humanos.db.PerfilEmpleadoDB;
+import co.edu.unisabana.recursos_humanos.db.entidad.PerfilEmpleadoDB;
 import co.edu.unisabana.recursos_humanos.db.PerfilEmpleadoRepository;
 import org.springframework.stereotype.Service;
 

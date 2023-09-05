@@ -1,4 +1,4 @@
-package co.edu.unisabana.recursos_humanos.db;
+package co.edu.unisabana.recursos_humanos.db.entidad;
 
 import lombok.Data;
 
@@ -10,21 +10,15 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "Perfil")
-public class PerfilEmpleadoDB {
+@Table(name="rol")
+public class RolDB {
 
     @Id
     @Column
     private int id;
 
     @Column
-    private int idEmpleado;
-
-    @Column
-    private String habilidades;
-
-    @Column
-    private int anosExperiencia;
+    private String responsabilidades;
 
     @Column(name = "Fecha_creacion")
     private LocalDateTime fechaCreacion;
