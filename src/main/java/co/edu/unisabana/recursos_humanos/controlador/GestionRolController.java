@@ -47,6 +47,7 @@ public class GestionRolController {
         }
     }
 
+    @DeleteMapping(path = "/rol/actualizar")
     public Respuesta eliminarRol(@RequestParam int id){
         try {
             logica.eliminarRol(id);
