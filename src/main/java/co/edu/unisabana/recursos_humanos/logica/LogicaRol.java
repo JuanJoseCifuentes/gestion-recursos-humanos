@@ -26,7 +26,7 @@ public class LogicaRol {
         if(rol.isPresent()){
             return rol.toString();
         } else {
-            return "El usuario no existe.";
+            return "El rol no existe.";
         }
     }
 
