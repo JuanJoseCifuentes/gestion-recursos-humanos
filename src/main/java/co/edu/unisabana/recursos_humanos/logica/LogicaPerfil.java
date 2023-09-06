@@ -1,9 +1,8 @@
 package co.edu.unisabana.recursos_humanos.logica;
 
 import co.edu.unisabana.recursos_humanos.controlador.dto.PerfilEmpleadoDTO;
-import co.edu.unisabana.recursos_humanos.db.entidad.EmpleadoDB;
-import co.edu.unisabana.recursos_humanos.db.entidad.PerfilEmpleadoDB;
 import co.edu.unisabana.recursos_humanos.db.PerfilEmpleadoRepository;
+import co.edu.unisabana.recursos_humanos.db.entidad.PerfilEmpleadoDB;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
