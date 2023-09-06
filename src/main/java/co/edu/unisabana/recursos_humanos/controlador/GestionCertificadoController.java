@@ -1,8 +1,9 @@
 package co.edu.unisabana.recursos_humanos.controlador;
 
+import co.edu.unisabana.recursos_humanos.controlador.dto.CertificadoDTO;
 import co.edu.unisabana.recursos_humanos.controlador.dto.Respuesta;
 import co.edu.unisabana.recursos_humanos.db.entidad.CertificadoDB;
-import co.edu.unisabana.recursos_humanos.logica.LogicaCerticado;
+import co.edu.unisabana.recursos_humanos.logica.LogicaCertificado;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GestionCertificadoController {
 
-    public LogicaCerticado logica;
+    public LogicaCertificado logica;
 
-    public GestionCertificadoController(LogicaCerticado logica) {
+    public GestionCertificadoController(LogicaCertificado logica) {
         this.logica = logica;
     }
 
     @PostMapping(path = "/certificado/subir")
-    public Respuesta subirRol(@RequestBody CertificadoDB certificado) {
+    public Respuesta subirRol(@RequestBody CertificadoDTO certificado) {
         try {
             logica.crearCertificado(certificado);
             return new Respuesta("Exitoso","El certificado se ha creado correctamente.");
