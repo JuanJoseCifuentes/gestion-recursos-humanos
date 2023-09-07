@@ -1,13 +1,15 @@
 package co.edu.unisabana.recursos_humanos.logica;
 
+import co.edu.unisabana.recursos_humanos.controlador.dto.CertificadoDTO;
 import co.edu.unisabana.recursos_humanos.controlador.dto.EmpleadoDTO;
+import co.edu.unisabana.recursos_humanos.db.EmpleadoRepository;
 import co.edu.unisabana.recursos_humanos.db.RolRepository;
 import co.edu.unisabana.recursos_humanos.db.entidad.EmpleadoDB;
-import co.edu.unisabana.recursos_humanos.db.EmpleadoRepository;
 import co.edu.unisabana.recursos_humanos.db.entidad.RolDB;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,16 +23,24 @@ public class LogicaEmpleado {
         this.rolRepository = rolRepository;
     }
 
-    public List<EmpleadoDB> buscarEmpleadosTodos() {
-        return empleadoRepository.findAll();
+    public List<EmpleadoDTO> buscarEmpleadosTodos() {
+        List<EmpleadoDB> empleados = empleadoRepository.findAll();
+        List<EmpleadoDTO> listaRespuesta = new ArrayList<>();
+        for (EmpleadoDB empleadoDB : empleados) {
+            listaRespuesta.add(transformarToDTO(empleadoDB));
+        }
+
+        return listaRespuesta;
     }
 
-    public String buscarEmpleadoPorID(int id) {
+    public List<EmpleadoDTO> buscarEmpleadoPorID(int id) {
         Optional<EmpleadoDB> empleado = empleadoRepository.findById(id);
-        if(empleado.isPresent()){
-            return empleado.toString();
+        if (empleado.isPresent()) {
+            List<EmpleadoDTO> respuesta = new ArrayList<>();
+            respuesta.add(transformarToDTO(empleado.get()));
+            return respuesta;
         } else {
-            return "El usuario no existe.";
+            return new ArrayList<>();
         }
     }
 
@@ -74,5 +84,18 @@ public class LogicaEmpleado {
         empleadoActualizar.setRol(rol);
         empleadoActualizar.setFechaActualizacion(LocalDateTime.now());
         empleadoRepository.save(empleadoActualizar);
+    }
+
+    private static EmpleadoDTO transformarToDTO(EmpleadoDB empleado) {
+        EmpleadoDTO empleadoDTO = new EmpleadoDTO();
+        empleadoDTO.setId(empleado.getId());
+        empleadoDTO.setNombre(empleado.getNombre());
+        empleadoDTO.setEdad(empleado.getEdad());
+        empleadoDTO.setCorreo(empleado.getCorreo());
+        empleadoDTO.setTelefono(empleado.getTelefono());
+        empleadoDTO.setIdRol(empleado.getRol().getId());
+        empleadoDTO.setDireccion(empleado.getDireccion());
+        empleadoDTO.setCedula(empleado.getCedula());
+        return empleadoDTO;
     }
 }

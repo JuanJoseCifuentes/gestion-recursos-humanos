@@ -40,14 +40,8 @@ public class LogicaCertificado {
     public List<CertificadoDTO> buscarCertificadosTodos() {
         List<CertificadoDB> certificados = certificadoRepository.findAll();
         List<CertificadoDTO> listaRespuesta = new ArrayList<>();
-        for (CertificadoDB certificado : certificados) {
-            CertificadoDTO certificadoDTO = new CertificadoDTO();
-            certificadoDTO.setId(certificado.getId());
-            certificadoDTO.setDescripcion(certificado.getDescripcion());
-            certificadoDTO.setTipo(certificado.getTipo());
-            certificadoDTO.setFechaExpedicion(certificado.getFechaExpedicion());
-            certificadoDTO.setEntidadExpedidora(certificado.getEntidadExpedidora());
-            certificadoDTO.setIdEmpleado(certificado.getEmpleado().getId());
+        for (CertificadoDB certificadoDB : certificados) {
+            listaRespuesta.add(transformarToDTO(certificadoDB));
         }
         return listaRespuesta;
     }
@@ -56,17 +50,7 @@ public class LogicaCertificado {
         Optional<CertificadoDB> certificado = certificadoRepository.findById(id);
         if(certificado.isPresent()){
             List<CertificadoDTO> respuesta = new ArrayList<>();
-            CertificadoDTO certificadoDTO = new CertificadoDTO();
-
-            CertificadoDB certificadoDB = certificado.get();
-
-            certificadoDTO.setId(certificadoDB.getId());
-            certificadoDTO.setDescripcion(certificadoDB.getDescripcion());
-            certificadoDTO.setTipo(certificadoDB.getTipo());
-            certificadoDTO.setFechaExpedicion(certificadoDB.getFechaExpedicion());
-            certificadoDTO.setEntidadExpedidora(certificadoDB.getEntidadExpedidora());
-            certificadoDTO.setIdEmpleado(certificadoDB.getEmpleado().getId());
-            respuesta.add(certificadoDTO);
+            respuesta.add(transformarToDTO(certificado.get()));
             return respuesta;
         } else {
             return new ArrayList<>();
@@ -75,5 +59,16 @@ public class LogicaCertificado {
 
     public void eliminarCertificado(int id) {
         empleadoRepository.deleteById(id);
+    }
+
+    private static CertificadoDTO transformarToDTO(CertificadoDB certificado) {
+        CertificadoDTO certificadoDTO = new CertificadoDTO();
+        certificadoDTO.setId(certificado.getId());
+        certificadoDTO.setDescripcion(certificado.getDescripcion());
+        certificadoDTO.setTipo(certificado.getTipo());
+        certificadoDTO.setFechaExpedicion(certificado.getFechaExpedicion());
+        certificadoDTO.setEntidadExpedidora(certificado.getEntidadExpedidora());
+        certificadoDTO.setIdEmpleado(certificado.getEmpleado().getId());
+        return certificadoDTO;
     }
 }

@@ -2,7 +2,6 @@ package co.edu.unisabana.recursos_humanos.controlador;
 
 import co.edu.unisabana.recursos_humanos.controlador.dto.EmpleadoDTO;
 import co.edu.unisabana.recursos_humanos.controlador.dto.Respuesta;
-import co.edu.unisabana.recursos_humanos.db.entidad.EmpleadoDB;
 import co.edu.unisabana.recursos_humanos.logica.LogicaEmpleado;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,12 +17,12 @@ public class GestionEmpleadoController {
     }
 
     @GetMapping(path = "/empleado/buscar/todos")
-    public List<EmpleadoDB> buscarEmpleados() {
+    public List<EmpleadoDTO> buscarEmpleados() {
         return logica.buscarEmpleadosTodos();
     }
 
     @GetMapping(path = "/empleado/buscar/id")
-    public String buscarEmpleadoPorID(@RequestParam int id) {
+    public List<EmpleadoDTO> buscarEmpleadoPorID(@RequestParam int id) {
          return logica.buscarEmpleadoPorID(id);
     }
 
