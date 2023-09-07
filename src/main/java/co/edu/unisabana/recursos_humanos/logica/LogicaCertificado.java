@@ -8,7 +8,9 @@ import co.edu.unisabana.recursos_humanos.db.entidad.EmpleadoDB;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LogicaCertificado {
@@ -35,15 +37,43 @@ public class LogicaCertificado {
         certificadoRepository.save(dbCertificado);
     }
 
-    public List<EmpleadoDB> buscarCertificadosTodos() {
-        return null;
+    public List<CertificadoDTO> buscarCertificadosTodos() {
+        List<CertificadoDB> certificados = certificadoRepository.findAll();
+        List<CertificadoDTO> listaRespuesta = new ArrayList<>();
+        for (CertificadoDB certificado : certificados) {
+            CertificadoDTO certificadoDTO = new CertificadoDTO();
+            certificadoDTO.setId(certificado.getId());
+            certificadoDTO.setDescripcion(certificado.getDescripcion());
+            certificadoDTO.setTipo(certificado.getTipo());
+            certificadoDTO.setFechaExpedicion(certificado.getFechaExpedicion());
+            certificadoDTO.setEntidadExpedidora(certificado.getEntidadExpedidora());
+            certificadoDTO.setIdEmpleado(certificado.getEmpleado().getId());
+        }
+        return listaRespuesta;
     }
 
-    public String buscarCertificadosEmpleado(int id) {
-        return null;
+    public List<CertificadoDTO> buscarCertificadosPorIdCertificado(int id) {
+        Optional<CertificadoDB> certificado = certificadoRepository.findById(id);
+        if(certificado.isPresent()){
+            List<CertificadoDTO> respuesta = new ArrayList<>();
+            CertificadoDTO certificadoDTO = new CertificadoDTO();
+
+            CertificadoDB certificadoDB = certificado.get();
+
+            certificadoDTO.setId(certificadoDB.getId());
+            certificadoDTO.setDescripcion(certificadoDB.getDescripcion());
+            certificadoDTO.setTipo(certificadoDB.getTipo());
+            certificadoDTO.setFechaExpedicion(certificadoDB.getFechaExpedicion());
+            certificadoDTO.setEntidadExpedidora(certificadoDB.getEntidadExpedidora());
+            certificadoDTO.setIdEmpleado(certificadoDB.getEmpleado().getId());
+            respuesta.add(certificadoDTO);
+            return respuesta;
+        } else {
+            return new ArrayList<>();
+        }
     }
 
     public void eliminarCertificado(int id) {
-
+        empleadoRepository.deleteById(id);
     }
 }

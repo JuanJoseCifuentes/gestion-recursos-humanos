@@ -1,9 +1,7 @@
 package co.edu.unisabana.recursos_humanos.controlador;
 
 import co.edu.unisabana.recursos_humanos.controlador.dto.CertificadoDTO;
-import co.edu.unisabana.recursos_humanos.controlador.dto.EmpleadoDTO;
 import co.edu.unisabana.recursos_humanos.controlador.dto.Respuesta;
-import co.edu.unisabana.recursos_humanos.db.entidad.EmpleadoDB;
 import co.edu.unisabana.recursos_humanos.logica.LogicaCertificado;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,13 +17,13 @@ public class GestionCertificadoController {
     }
 
     @GetMapping(path = "/certificado/buscar/todos")
-    public List<EmpleadoDB> buscarCertificados() {
+    public List<CertificadoDTO> buscarCertificados() {
         return logica.buscarCertificadosTodos();
     }
 
-    @GetMapping(path = "/certificado/buscar/id_empleado")
-    public String buscarCertificadoPorID(@RequestParam int id) {
-        return logica.buscarCertificadosEmpleado(id);
+    @GetMapping(path = "/certificado/buscar/id_certificado")
+    public List<CertificadoDTO> buscarCertificadoPorIdCertificado(@RequestParam int id) {
+        return logica.buscarCertificadosPorIdCertificado(id);
     }
 
     @PostMapping(path = "/certificado/subir")
@@ -42,9 +40,9 @@ public class GestionCertificadoController {
     public Respuesta eliminarCertificado(@RequestParam int id){
         try {
             logica.eliminarCertificado(id);
-            return new Respuesta("Exitoso", "El empleado se ha eliminado correctamente.");
+            return new Respuesta("Exitoso", "El certificado se ha eliminado correctamente.");
         } catch (Exception e) {
-            return new Respuesta("Fallido", "Algo ha salido mal. No se ha podido eliminar al empleado.");
+            return new Respuesta("Fallido", "Algo ha salido mal. No se ha podido eliminar el certificado.");
         }
     }
 }
