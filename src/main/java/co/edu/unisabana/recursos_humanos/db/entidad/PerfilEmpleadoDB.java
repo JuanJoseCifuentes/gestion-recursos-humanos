@@ -2,10 +2,7 @@ package co.edu.unisabana.recursos_humanos.db.entidad;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
@@ -17,8 +14,9 @@ public class PerfilEmpleadoDB {
     @Column
     private int id;
 
-    @Column
-    private int idEmpleado;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_empleado", referencedColumnName = "ID")
+    private EmpleadoDB empleado;
 
     @Column
     private String habilidades;

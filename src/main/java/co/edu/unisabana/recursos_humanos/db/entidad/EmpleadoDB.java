@@ -1,9 +1,12 @@
 package co.edu.unisabana.recursos_humanos.db.entidad;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -25,9 +28,6 @@ public class EmpleadoDB {
     @Column(name = "Telefono")
     private int telefono;
 
-    @Column(name = "ID_rol")
-    private int idRol;
-
     @Column(name = "Direccion")
     private String direccion;
 
@@ -39,5 +39,13 @@ public class EmpleadoDB {
 
     @Column(name = "Fecha_actualizacion")
     private LocalDateTime fechaActualizacion;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_rol", referencedColumnName = "ID")
+    private RolDB rol;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "empleado")
+    private Set<CertificadoDB> certificados = new HashSet<>();
 
 }

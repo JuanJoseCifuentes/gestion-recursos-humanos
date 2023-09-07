@@ -8,5 +8,5 @@ public class PerfilEmpleadoDTO {
     private int id;
     private int idEmpleado;
     private String habilidades;
-    private int anosExpereiencia;
+    private int anosExperiencia;
 }

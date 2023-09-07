@@ -7,16 +7,16 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "Certificaciones")
+@Table(name = "Certificacion")
 public class CertificadoDB {
 
     @Id
     @Column
     private int id;
 
-    @JoinColumn(name = "ID_empleado")
-    @OneToOne
-    private EmpleadoDB idEmpleado;
+    @JoinColumn(name = "id_empleado", referencedColumnName = "ID")
+    @ManyToOne(cascade = CascadeType.ALL)
+    private EmpleadoDB empleado;
 
     @Column
     private String tipo;

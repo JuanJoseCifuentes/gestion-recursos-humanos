@@ -1,8 +1,10 @@
 package co.edu.unisabana.recursos_humanos.logica;
 
 import co.edu.unisabana.recursos_humanos.controlador.dto.EmpleadoDTO;
+import co.edu.unisabana.recursos_humanos.db.RolRepository;
 import co.edu.unisabana.recursos_humanos.db.entidad.EmpleadoDB;
 import co.edu.unisabana.recursos_humanos.db.EmpleadoRepository;
+import co.edu.unisabana.recursos_humanos.db.entidad.RolDB;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -12,9 +14,11 @@ import java.util.Optional;
 @Service
 public class LogicaEmpleado {
     private final EmpleadoRepository empleadoRepository;
+    private final RolRepository rolRepository;
 
-    public LogicaEmpleado(EmpleadoRepository empleadoRepository) {
+    public LogicaEmpleado(EmpleadoRepository empleadoRepository, RolRepository rolRepository) {
         this.empleadoRepository = empleadoRepository;
+        this.rolRepository = rolRepository;
     }
 
     public List<EmpleadoDB> buscarEmpleadosTodos() {
@@ -31,6 +35,7 @@ public class LogicaEmpleado {
     }
 
     public void crearEmpleado(EmpleadoDTO empleadoDTO) {
+        RolDB rol = rolRepository.getReferenceById(empleadoDTO.getIdRol());
 
         EmpleadoDB empleado = new EmpleadoDB();
         empleado.setId(empleadoDTO.getId());
@@ -38,7 +43,7 @@ public class LogicaEmpleado {
         empleado.setEdad(empleadoDTO.getEdad());
         empleado.setCorreo(empleadoDTO.getCorreo());
         empleado.setTelefono(empleadoDTO.getTelefono());
-        empleado.setIdRol(empleadoDTO.getIdRol());
+        empleado.setRol(rol);
         empleado.setDireccion(empleadoDTO.getDireccion());
         empleado.setCedula(empleadoDTO.getCedula());
         empleado.setFechaActualizacion(LocalDateTime.now());
@@ -63,8 +68,10 @@ public class LogicaEmpleado {
     }
 
     public void modificarRolEmpleado(int id, int idNuevoRol) {
+        RolDB rol = rolRepository.getReferenceById(idNuevoRol);
+
         EmpleadoDB empleadoActualizar = empleadoRepository.getReferenceById(id);
-        empleadoActualizar.setIdRol(idNuevoRol);
+        empleadoActualizar.setRol(rol);
         empleadoActualizar.setFechaActualizacion(LocalDateTime.now());
         empleadoRepository.save(empleadoActualizar);
     }

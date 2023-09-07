@@ -8,6 +8,7 @@ import co.edu.unisabana.recursos_humanos.db.entidad.EmpleadoDB;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class LogicaCertificado {
@@ -24,7 +25,7 @@ public class LogicaCertificado {
         EmpleadoDB empleadoReferencia = empleadoRepository.getReferenceById(certificado.getIdEmpleado());
 
         dbCertificado.setId(certificado.getId());
-        dbCertificado.setIdEmpleado(empleadoReferencia);
+        dbCertificado.setEmpleado(empleadoReferencia);
         dbCertificado.setTipo(certificado.getTipo());
         dbCertificado.setDescripcion(certificado.getDescripcion());
         dbCertificado.setFechaExpedicion(certificado.getFechaExpedicion());
@@ -32,5 +33,17 @@ public class LogicaCertificado {
         dbCertificado.setFechaActualizacion(LocalDateTime.now());
         dbCertificado.setFechaCreacion(LocalDateTime.now());
         certificadoRepository.save(dbCertificado);
+    }
+
+    public List<EmpleadoDB> buscarCertificadosTodos() {
+        return null;
+    }
+
+    public String buscarCertificadosEmpleado(int id) {
+        return null;
+    }
+
+    public void eliminarCertificado(int id) {
+
     }
 }
