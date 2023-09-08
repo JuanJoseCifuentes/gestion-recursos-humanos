@@ -1,6 +1,5 @@
 package co.edu.unisabana.recursos_humanos.logica;
 
-import co.edu.unisabana.recursos_humanos.controlador.dto.EmpleadoDTO;
 import co.edu.unisabana.recursos_humanos.controlador.dto.PerfilEmpleadoDTO;
 import co.edu.unisabana.recursos_humanos.db.EmpleadoRepository;
 import co.edu.unisabana.recursos_humanos.db.PerfilEmpleadoRepository;

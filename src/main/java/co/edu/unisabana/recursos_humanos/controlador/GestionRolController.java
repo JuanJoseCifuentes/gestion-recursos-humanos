@@ -2,7 +2,6 @@ package co.edu.unisabana.recursos_humanos.controlador;
 
 import co.edu.unisabana.recursos_humanos.controlador.dto.Respuesta;
 import co.edu.unisabana.recursos_humanos.controlador.dto.RolDTO;
-import co.edu.unisabana.recursos_humanos.db.entidad.RolDB;
 import co.edu.unisabana.recursos_humanos.logica.LogicaRol;
 import org.springframework.web.bind.annotation.*;
 
