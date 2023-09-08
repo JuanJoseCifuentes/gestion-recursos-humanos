@@ -18,12 +18,12 @@ public class GestionPerfilController {
     }
 
     @GetMapping(path = "/perfil/buscar/todos")
-    public List<PerfilEmpleadoDB> buscarPerfiles() {
+    public List<PerfilEmpleadoDTO> buscarPerfiles() {
         return logica.buscarPerfilTodos();
     }
 
     @GetMapping(path = "/perfil/buscar/id")
-    public String buscarPerfilPorID(@RequestParam int id) {
+    public List<PerfilEmpleadoDTO> buscarPerfilPorID(@RequestParam int id) {
         return logica.buscarPerfilPorID(id);
     }
 

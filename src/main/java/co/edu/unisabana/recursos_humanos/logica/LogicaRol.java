@@ -6,6 +6,7 @@ import co.edu.unisabana.recursos_humanos.db.RolRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,16 +18,23 @@ public class LogicaRol {
         this.rolRepository = rolRepository;
     }
 
-    public List<RolDB> buscarRolTodos(){
-        return rolRepository.findAll();
+    public List<RolDTO> buscarRolTodos(){
+        List<RolDB> roles = rolRepository.findAll();
+        List<RolDTO> listaRespuesta = new ArrayList<>();
+        for (RolDB rol : roles){
+            listaRespuesta.add(transformarToDTO(rol));
+        }
+        return listaRespuesta;
     }
 
-    public String buscarRolPorID(int id) {
+    public List<RolDTO> buscarRolPorID(int id) {
         Optional<RolDB> rol = rolRepository.findById(id);
         if(rol.isPresent()){
-            return rol.toString();
+           List<RolDTO> respuesta = new ArrayList<>();
+           respuesta.add(transformarToDTO(rol.get()));
+           return respuesta;
         } else {
-            return "El rol no existe.";
+            return new ArrayList<>();
         }
     }
 
@@ -50,5 +58,12 @@ public class LogicaRol {
         rolActualizar.setResponsabilidades(nuevoRol.getResponsabilidades());
         rolActualizar.setFechaActualizacion(LocalDateTime.now());
         rolRepository.save(rolActualizar);
+    }
+
+    private static RolDTO transformarToDTO(RolDB rol){
+        RolDTO rolDTO = new RolDTO();
+        rolDTO.setId(rol.getId());
+        rolDTO.setResponsabilidades(rol.getResponsabilidades());
+        return rolDTO;
     }
 }

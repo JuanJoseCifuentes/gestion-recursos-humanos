@@ -28,12 +28,12 @@ public class GestionRolController {
     }
 
     @GetMapping (path = "/rol/buscar/id")
-    public String buscarRolPorID(@RequestParam int id){
+    public List<RolDTO> buscarRolPorID(@RequestParam int id){
         return logica.buscarRolPorID(id);
     }
 
-    @GetMapping (path = "/rol/buscar")
-    public List<RolDB> buscarRoles(){
+    @GetMapping (path = "/rol/buscar/todos")
+    public List<RolDTO> buscarRoles(){
         return logica.buscarRolTodos();
     }
 

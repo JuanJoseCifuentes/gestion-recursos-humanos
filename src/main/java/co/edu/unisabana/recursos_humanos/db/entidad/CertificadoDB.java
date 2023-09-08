@@ -1,5 +1,6 @@
 package co.edu.unisabana.recursos_humanos.db.entidad;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ public class CertificadoDB {
     @Column
     private int id;
 
+    @JsonIgnore
     @JoinColumn(name = "id_empleado", referencedColumnName = "ID")
     @ManyToOne(cascade = CascadeType.ALL)
     private EmpleadoDB empleado;
