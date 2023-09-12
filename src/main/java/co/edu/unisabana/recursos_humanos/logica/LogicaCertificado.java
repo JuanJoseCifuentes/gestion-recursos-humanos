@@ -17,9 +17,12 @@ public class LogicaCertificado {
     private final CertificadoRepository certificadoRepository;
     private final EmpleadoRepository empleadoRepository;
 
+    private final int valor;
+
     public LogicaCertificado(CertificadoRepository certificadoRepository, EmpleadoRepository empleadoRepository) {
         this.certificadoRepository = certificadoRepository;
         this.empleadoRepository = empleadoRepository;
+        this.valor = 5;
     }
 
     public void crearCertificado(CertificadoDTO certificado){
