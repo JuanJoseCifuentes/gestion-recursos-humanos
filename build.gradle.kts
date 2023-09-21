@@ -28,6 +28,7 @@ dependencies {
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	implementation("mysql:mysql-connector-java:8.0.30")
+	testImplementation("com.h2database:h2:2.2.220")
 }
 
 tasks.withType<Test> {
