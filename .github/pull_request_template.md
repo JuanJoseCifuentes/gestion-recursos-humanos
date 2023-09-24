@@ -1,5 +1,5 @@
 <!--
-PR INSTRUCTIONS 
+PR INSTRUCCIONES 
 
 Title: Explica los cambios principales del PR en pocas palabras.
 Description: Detalla lo que cambiaste.
@@ -8,11 +8,11 @@ Reviewers: No es necesario taggear a alguien. Es necesario 1 revisión para acep
 Borra los comentarios antes de publicar el PR.
 -->
 
-## Description
+## Descripción
 
 <!-- Añade aquí tu descripción extendida del PR -->
 
-## Type of change
+## Tipo de cambio
 <!--
 Haz check a todo lo que sea relevante. Si escoges "Otro", explica por qué
 -->
@@ -23,12 +23,12 @@ Haz check a todo lo que sea relevante. Si escoges "Otro", explica por qué
 - [ ] Cambio a la documentación
 - [ ] Otro
 
-## Dependency
+## Dependecia
 <!--
 Debes incluír si este PR agrega nuevas dependencias. En caso contrario, simplemente escribe "No".
 -->
 
-## Author' checklist
+## Checklist - Autor
 
 - [ ] Corrí las pruebas unitarias antes de subirlo a GitHub?
 - [ ] Corrí las pruebas de integración antes de subirlo a GitHub?
@@ -38,7 +38,7 @@ Debes incluír si este PR agrega nuevas dependencias. En caso contrario, simplem
 - [ ] Algún cambio dependiente ha mergeado a la línea principal antes de subir el PR?
 
 
-## Reviewer' checklist
+## Checklist - Reseñante
 
 - [ ] Todos los commits están bien escritos de acuerdo a la guía [How to write a good commit message](https://chris.beams.io/posts/git-commit/#seven-rules)
 - [ ] Los tests implementados verifican las cosas indicadas y los casos de uso más comunes
