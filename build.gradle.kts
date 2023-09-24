@@ -2,6 +2,7 @@ plugins {
 	java
 	id("org.springframework.boot") version "2.7.15"
 	id("io.spring.dependency-management") version "1.0.15.RELEASE"
+	jacoco
 }
 
 group = "co.edu.unisabana"
