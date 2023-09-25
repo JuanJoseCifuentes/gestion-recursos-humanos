@@ -43,8 +43,10 @@ public class LogicaEmpleado {
         }
     }
 
-    public void crearEmpleado(EmpleadoDTO empleadoDTO) {
+    public EmpleadoDB crearEmpleado(EmpleadoDTO empleadoDTO) {
         RolDB rol = rolRepository.getReferenceById(empleadoDTO.getIdRol());
+
+        LocalDateTime now = LocalDateTime.now();
 
         EmpleadoDB empleado = new EmpleadoDB();
         empleado.setId(empleadoDTO.getId());
@@ -55,9 +57,11 @@ public class LogicaEmpleado {
         empleado.setRol(rol);
         empleado.setDireccion(empleadoDTO.getDireccion());
         empleado.setCedula(empleadoDTO.getCedula());
-        empleado.setFechaActualizacion(LocalDateTime.now());
-        empleado.setFechaCreacion(LocalDateTime.now());
+        empleado.setFechaActualizacion(now);
+        empleado.setFechaCreacion(now);
         empleadoRepository.save(empleado);
+
+        return empleado;
     }
 
     public void eliminarEmpleado(int id) {
