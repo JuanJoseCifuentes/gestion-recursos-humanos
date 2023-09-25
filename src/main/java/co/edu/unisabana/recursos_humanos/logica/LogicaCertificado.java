@@ -71,4 +71,6 @@ public class LogicaCertificado {
         certificadoDTO.setIdEmpleado(certificado.getEmpleado().getId());
         return certificadoDTO;
     }
+
+    
 }
