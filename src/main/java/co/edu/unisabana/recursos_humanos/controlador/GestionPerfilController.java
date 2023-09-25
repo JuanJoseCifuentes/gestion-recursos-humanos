@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping(path = "/perfil")
 public class GestionPerfilController {
 
     public LogicaPerfil logica;
@@ -16,19 +17,19 @@ public class GestionPerfilController {
         this.logica = logica;
     }
 
-    @GetMapping(path = "/perfil/buscar/todos")
+    @GetMapping(path = "/buscar/todos")
     public List<PerfilEmpleadoDTO> buscarPerfiles() {
         return logica.buscarPerfilTodos();
     }
 
-    @GetMapping(path = "/perfil/buscar/id")
+    @GetMapping(path = "/buscar/id")
     public List<PerfilEmpleadoDTO> buscarPerfilPorID(@RequestParam int id) {
         return logica.buscarPerfilPorID(id);
     }
 
 
 
-    @PostMapping(path = "/perfil/subir")
+    @PostMapping(path = "/subir")
     public Respuesta subirRol(@RequestBody PerfilEmpleadoDTO perfil) {
         try {
             logica.crearPerfil(perfil);
@@ -38,7 +39,7 @@ public class GestionPerfilController {
         }
     }
 
-    @PutMapping(path = "/perfil/actualizar")
+    @PutMapping(path = "/actualizar")
     public Respuesta actualizarPerfil (@RequestBody PerfilEmpleadoDTO perfilNuevo){
         try {
             logica.actualizarPerfil(perfilNuevo.getId(), perfilNuevo);
@@ -48,7 +49,7 @@ public class GestionPerfilController {
         }
     }
 
-    @DeleteMapping (path = "/perfil/eliminar")
+    @DeleteMapping (path = "/eliminar")
     public Respuesta eliminarPerfil (@RequestParam int id){
         try {
             logica.eliminarPerfil(id);
