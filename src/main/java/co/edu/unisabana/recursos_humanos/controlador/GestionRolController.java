@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping(path = "/rol")
 public class GestionRolController {
 
     public LogicaRol logica;
@@ -16,7 +17,7 @@ public class GestionRolController {
         this.logica = logica;
     }
 
-    @PostMapping(path = "/rol/crear")
+    @PostMapping(path = "/crear")
     public Respuesta crearRol(@RequestBody RolDTO rol) {
         try {
             logica.crearRol(rol);
@@ -26,17 +27,17 @@ public class GestionRolController {
         }
     }
 
-    @GetMapping (path = "/rol/buscar/id")
+    @GetMapping (path = "/buscar/id")
     public List<RolDTO> buscarRolPorID(@RequestParam int id){
         return logica.buscarRolPorID(id);
     }
 
-    @GetMapping (path = "/rol/buscar/todos")
+    @GetMapping (path = "/buscar/todos")
     public List<RolDTO> buscarRoles(){
         return logica.buscarRolTodos();
     }
 
-    @PutMapping(path = "/rol/actualizar")
+    @PutMapping(path = "/actualizar")
     public Respuesta actualizarRol(@RequestBody RolDTO nuevoRol){
         try {
             logica.actualizarRol(nuevoRol.getId(), nuevoRol);
@@ -46,7 +47,7 @@ public class GestionRolController {
         }
     }
 
-    @DeleteMapping(path = "/rol/eliminar/id")
+    @DeleteMapping(path = "/eliminar/id")
     public Respuesta eliminarRol(@RequestParam int id){
         try {
             logica.eliminarRol(id);

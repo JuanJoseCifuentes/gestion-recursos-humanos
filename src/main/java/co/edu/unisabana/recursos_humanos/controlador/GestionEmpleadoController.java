@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping(path = "/empleado")
 public class GestionEmpleadoController {
 
     public LogicaEmpleado logica;
@@ -16,17 +17,17 @@ public class GestionEmpleadoController {
         this.logica = logica;
     }
 
-    @GetMapping(path = "/empleado/buscar/todos")
+    @GetMapping(path = "/buscar/todos")
     public List<EmpleadoDTO> buscarEmpleados() {
         return logica.buscarEmpleadosTodos();
     }
 
-    @GetMapping(path = "/empleado/buscar/id")
+    @GetMapping(path = "/buscar/id")
     public List<EmpleadoDTO> buscarEmpleadoPorID(@RequestParam int id) {
          return logica.buscarEmpleadoPorID(id);
     }
 
-    @PostMapping(path = "/empleado/crear")
+    @PostMapping(path = "/crear")
     public Respuesta crearEmpleado(@RequestBody EmpleadoDTO empleadoDTO) {
         try {
             logica.crearEmpleado(empleadoDTO);
@@ -36,7 +37,7 @@ public class GestionEmpleadoController {
         }
     }
 
-    @PutMapping(path = "/empleado/actualizar/informacion_personal")
+    @PutMapping(path = "/actualizar/informacion_personal")
     public Respuesta actualizarInformacionPersonalEmpleado(@RequestBody EmpleadoDTO nuevoEmpleado){
         try {
             logica.modificarInformacionPersonalEmpleado(nuevoEmpleado.getId(), nuevoEmpleado);
@@ -46,7 +47,7 @@ public class GestionEmpleadoController {
         }
     }
 
-    @PutMapping(path = "/empleado/actualizar/rol")
+    @PutMapping(path = "/actualizar/rol")
     public Respuesta actualizarRolEmpleado(@RequestParam int id, int idNuevoRol){
         try {
             logica.modificarRolEmpleado(id, idNuevoRol);
@@ -56,7 +57,7 @@ public class GestionEmpleadoController {
         }
     }
 
-    @DeleteMapping(path = "/empleado/eliminar/id")
+    @DeleteMapping(path = "/eliminar/id")
     public Respuesta eliminarEmpleado(@RequestParam int id){
         try {
             logica.eliminarEmpleado(id);

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping(path = "/certificado")
 public class GestionCertificadoController {
 
     public LogicaCertificado logica;
@@ -16,17 +17,17 @@ public class GestionCertificadoController {
         this.logica = logica;
     }
 
-    @GetMapping(path = "/certificado/buscar/todos")
+    @GetMapping(path = "/buscar/todos")
     public List<CertificadoDTO> buscarCertificados() {
         return logica.buscarCertificadosTodos();
     }
 
-    @GetMapping(path = "/certificado/buscar/id_certificado")
+    @GetMapping(path = "/buscar/id_certificado")
     public List<CertificadoDTO> buscarCertificadoPorIdCertificado(@RequestParam int id) {
         return logica.buscarCertificadosPorIdCertificado(id);
     }
 
-    @PostMapping(path = "/certificado/subir")
+    @PostMapping(path = "/subir")
     public Respuesta subirCertificado(@RequestBody CertificadoDTO certificado) {
         try {
             logica.crearCertificado(certificado);
@@ -36,7 +37,7 @@ public class GestionCertificadoController {
         }
     }
 
-    @DeleteMapping(path = "/certificado/eliminar/id")
+    @DeleteMapping(path = "/eliminar/id")
     public Respuesta eliminarCertificado(@RequestParam int id){
         try {
             logica.eliminarCertificado(id);
