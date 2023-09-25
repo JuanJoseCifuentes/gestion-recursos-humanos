@@ -1,0 +1,619 @@
+openapi: 3.0.1
+info:
+  title: API para el manejo del área de recursos humanos
+  description: Esta API esta encargada de la gestión de los empleados de una empresa por medio del departamento de recursos humanos, donde se pueden manejar la creación modificacion y eliminacion de los empleados, ademas de sus datos personales y datos relacionados con los roles que cumplen en la empresa y las caracteristicas del perfil laboral
+  version: 1.0.0
+servers:
+- url: http//localhost:8080
+tags: 
+- name: Empleados
+  description: Este endpoint maneja todo lo que tiene que ver con el empleado base, sus datos personales y el ID que indica el rol al que pertenece en la empresa
+  
+- name: Roles
+  description: Este endpoint maneja todo lo que tiene que ver con los roles del empleado, sus responsabilidades y el ID que se relaciona con su unico
+  
+- name: Perfiles
+  description: Este endpoint maneja todo lo que tiene que ver con los perfiles profesionales de los empleados de la empresa, la creación modificación, busqueda y eliminación de datos como las habilidades y los años de experiencia
+  
+- name: Certificados
+  description: Este endpoint maneja los certificados profesionales que fueron entregados a los empleados a lo largo de su carrera, cuando fueron otorgados, por quien y que demuestran dichos certificados 
+  
+paths: 
+  /empleado/buscar/todos:
+    get: 
+      tags: 
+      - Empleados
+      summary: Trae a todos los empleados que hacen parte de la organización
+      
+      responses: 
+        200: 
+            description: (OK) Los empleados fueron obtenidos correctamente
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+    
+  /empleado/buscar/id/{idEmpleado}:
+    get:
+      tags:
+        - Empleados
+      summary: Obtiene la información de un solo empleado de la base de datos por medio de su id debido
+      parameters:
+      - $ref: '#/components/parameters/idEmpleado'
+      responses: 
+        200: 
+          description: (OK) El empleado fue obtenido correctamente
+          content: 
+            application/json: 
+              schema: 
+                $ref: '#/components/schemas/ExitoEmpleadoGET'
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+          
+  /empleado/crear:
+    post: 
+      tags:
+      - Empleados
+      summary: Crea un nuevo empleado
+      requestBody: 
+        content:
+          application/json: 
+            schema:
+              $ref: '#/components/schemas/BodyEmpleados'
+        required: true
+      responses: 
+        200: 
+          description: (OK) El empleado fue creado correctamente
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+          
+  /empleado/actualizar/informacion_personal:
+    put:
+      tags:
+      - Empleados
+      summary: Modifica los datos personales del empleado
+      requestBody:
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BodyEmpleados'
+        required: true
+      responses: 
+        200: 
+          description: (OK) el empleado fue modificado correctamente
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+      
+  /empleado/actualizar/rol/{idEmpleado}AND{nuevoIdRol}:
+    put:
+      tags:
+        - Empleados
+      summary: Modifica el id del rol que le corresponde al empleado
+      parameters:
+      - $ref: '#/components/parameters/idEmpleado'
+      - $ref: '#/components/parameters/nuevoIdRol'
+      responses: 
+        200: 
+          description: (OK) El rol del empleado fue modificado correctamente
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+    
+  /empleado/eliminar/id/{idEmpleado}:
+    delete: 
+      tags:
+        - Empleados
+      summary: Elimina el empleado dado
+      parameters:
+      - $ref: '#/components/parameters/idEmpleado'
+      responses: 
+        200: 
+          description: (OK) El empleado fue eliminado correctamente
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  
+  /rol/buscar/todos:
+    get: 
+      tags: 
+      - Roles
+      summary: Trae a todos los roles existentes en la organización
+      
+      responses: 
+        200: 
+            description: (OK) Los roles fueron obtenidos correctamente
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+    
+  /rol/buscar/id/{idRol}:
+    get:
+      tags:
+        - Roles
+      summary: Obtiene la información de un solo rol por medio de su id dado
+      parameters:
+      - $ref: '#/components/parameters/idRol'
+      responses: 
+        200: 
+          description: (OK) El rol fue obtenido correctamente
+          content: 
+            application/json: 
+              schema: 
+                $ref: '#/components/schemas/ExitoRolGET'
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+          
+  /rol/crear:
+    post: 
+      tags:
+      - Roles
+      summary: Crea un nuevo rol
+      requestBody: 
+        content:
+          application/json: 
+            schema:
+              $ref: '#/components/schemas/BodyRol'
+        required: true
+      responses: 
+        200: 
+          description: (OK) Los roles fueron obtenidos correctamente
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+          
+  /rol/actualizar:
+    put:
+      tags:
+      - Roles
+      summary: Modifica el rol
+      requestBody:
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BodyRol'
+        required: true
+      responses: 
+        200: 
+          description: (OK) el rol fue modificado correctamente
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+    
+  /rol/eliminar/id/{idRol}:
+    delete: 
+      tags:
+        - Roles
+      summary: Elimina el rol dado segun el ID
+      parameters:
+      - $ref: '#/components/parameters/idRol'
+      responses: 
+        200: 
+          description: (OK) El rol fue eliminado correctamente
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  
+  /perfil/buscar/todos:
+    get: 
+      tags: 
+      - Perfiles
+      summary: Trae todos los perfiles de los empleados
+      
+      responses: 
+        200: 
+            description: (OK) Los perfiles fueron obtenidos correctamente
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+          
+  /perfil/buscar/id/{idPerfil}:
+    get:
+      tags:
+        - Perfiles
+      summary: Obtiene la información de un solo perfil profesional de la base de datos por medio de su id 
+      parameters:
+      - $ref: '#/components/parameters/idPerfil'
+      responses: 
+        200: 
+          description: (OK) El perfil fue obtenido correctamente
+          content: 
+            application/json: 
+              schema: 
+                $ref: '#/components/schemas/ExitoPerfilGET'
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  
+  /perfil/subir:
+    post: 
+      tags:
+      - Perfiles
+      summary: Crea un nuevo perfil profesional
+      requestBody: 
+        content:
+          application/json: 
+            schema:
+              $ref: '#/components/schemas/BodyPerfil'
+        required: true
+      responses: 
+        200: 
+          description: (OK) El perfil fue creado correctamente
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+          
+  /perfil/actualizar:
+    put:
+      tags:
+      - Perfiles
+      summary: Modifica los datos del perfil profesional del empleado
+      requestBody:
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BodyPerfil'
+        required: true
+      responses: 
+        200: 
+          description: (OK) el perfil fue modificado correctamente
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  
+  /perfil/eliminar/{idPerfil}:
+    delete: 
+      tags:
+        - Perfiles
+      summary: Elimina el perfil dado
+      parameters:
+      - $ref: '#/components/parameters/idPerfil'
+      responses: 
+        200: 
+          description: (OK) El perfil asociado al empleado fue eliminado correctamente
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+          
+          
+  /certificado/buscar/todos:
+    get: 
+      tags: 
+      - Certificados
+      summary: Trae todos los certificados de los diferentes empleados
+      
+      responses: 
+        200: 
+            description: (OK) Los certificados fueron obtenidos correctamente
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  
+  /certificado/buscar/id_certificado/{idCertificado}:
+    get:
+      tags:
+        - Certificados
+      summary: Obtiene la información de un solo certificado otorgado a un empleado de la base de datos por medio de su id 
+      parameters:
+      - $ref: '#/components/parameters/idCertificado'
+      responses: 
+        200: 
+          description: (OK) El certificado fue obtenido correctamente
+          content: 
+            application/json: 
+              schema: 
+                $ref: '#/components/schemas/ExitoCertificadoGET'
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+          
+  /certificado/subir:
+    post: 
+      tags:
+      - Certificados
+      summary: Crea un nuevo certificado profesional para un empleado
+      requestBody: 
+        content:
+          application/json: 
+            schema:
+              $ref: '#/components/schemas/BodyCertificado'
+        required: true
+      responses: 
+        200: 
+          description: (OK) El certificado fue creado correctamente
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+          
+  /certificado/eliminar/id/{idCertificado}:
+    delete: 
+      tags:
+        - Certificados
+      summary: Elimina el certificado dado
+      parameters:
+      - $ref: '#/components/parameters/idCertificado'
+      responses: 
+        200: 
+          description: (OK) El certificado asociado al empleado fue eliminado correctamente
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+ 
+components:
+  responses:
+    NotFound: 
+      description: (NotFound) no se encontro la información
+      
+    BadRequest:
+      description: (BadRequest) los datos enviados son incorrectos o hay datos no enviados
+      
+    ServerError: 
+      description: Error en el servidor
+  
+  parameters:
+    idEmpleado:
+      name: idEmpleado
+      in: path
+      description: Identificador del empleado
+      required: true
+      schema: 
+        type: integer
+        
+    nuevoIdRol:
+      name: nuevoIdRol
+      in: path
+      description: Identificador del rol del empleado
+      required: true
+      schema: 
+        type: integer
+        
+    idRol:
+      name: idRol
+      in: path
+      description: Identificador del rol presente en la empresa
+      required: true
+      schema: 
+        type: integer
+     
+    idPerfil:
+      name: idPerfil
+      in: path
+      description: Identificador del perfil profesional de un empleado
+      required: true
+      schema: 
+        type: integer
+        
+    idCertificado:
+      name: idCertificado
+      in: path
+      description: Identificador del certificado que pertenece a un empleado
+      required: true
+      schema: 
+        type: integer
+   
+  schemas:
+    BodyEmpleados:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID del empleado
+        nombre:
+          type: string
+          description: nombre del empleado
+        edad:
+          type: integer
+          description: Edad del empleado
+        correo:
+          type: string
+          description: Correo elctronico del empleado
+        telefono:
+          type: integer
+          description: Telefono del empleado
+        direccion:
+          type: string
+          description: Domicilio del empleado
+        cedula:
+          type: integer
+          description: Cedula del empleado
+        id_rol:
+          type: integer
+          description: ID del empleado
+  
+    ExitoEmpleadoGET:
+      type: object
+      properties: 
+        id:
+          type: integer
+          description: ID del empleado
+        nombre:
+          type: string
+          description: nombre del empleado
+        edad:
+          type: integer
+          description: Edad del empleado
+        correo:
+          type: string
+          description: Correo elctronico del empleado
+        telefono:
+          type: integer
+          description: Telefono del empleado
+        direccion:
+          type: string
+          description: Domicilio del empleado
+        cedula:
+          type: integer
+          description: Cedula del empleado
+        id_rol:
+          type: integer
+          description: ID del empleado
+    
+    BodyRol:
+      type: object
+      properties:
+        ID:
+          type: integer
+          description: ID
+        responsabilidades:
+          type: string
+          description: responsabilidades
+          
+    ExitoRolGET:
+      type: object
+      properties: 
+        ID:
+          type: integer
+          description: ID
+        responsabilidades:
+          type: string
+          description: responsabilidades
+    
+    BodyPerfil:
+      type: object
+      properties: 
+        id:
+          type: integer
+          description: ID del perfil
+        id_empleado:
+          type: integer
+          description: ID del empleado
+        habilidades:
+          type: string
+          description: Habilidades profesionales del empleado
+        anosdeexperiencia:
+          type: integer
+          description: Años de esxperiencia del empleado
+    
+    
+    ExitoPerfilGET:
+      type: object
+      properties: 
+        id:
+          type: integer
+          description: ID del perfil
+        id_empleado:
+          type: integer
+          description: ID del empleado
+        habilidades:
+          type: string
+          description: Habilidades profesionales del empleado
+        anosdeexperiencia:
+          type: integer
+          description: Años de esxperiencia del empleado
+          
+    
+    BodyCertificado:
+      type: object
+      properties: 
+        id:
+          type: integer
+          description: ID del certificado
+        id_empleado:
+          type: integer
+          description: ID del empleado al que pertenece el certificado
+        tipo:
+          type: string
+          description: Tipo de certificación profesional
+        descripcion:
+          type: integer
+          description: Descripción del cetificado dado al empleado
+        fechaExpedidora:
+          type: string
+          description: Fecha en la que fue expedido el certificado
+        entidadExpedidora:
+          type: string
+          description: Entidad que entrego el certificado
+          
+    ExitoCertificadoGET:
+      type: object
+      properties: 
+        id:
+          type: integer
+          description: ID del certificado
+        id_empleado:
+          type: integer
+          description: ID del empleado al que pertenece el certificado
+        tipo:
+          type: string
+          description: Tipo de certificación profesional
+        descripcion:
+          type: integer
+          description: Descripción del cetificado dado al empleado
+        fechaExpedicion:
+          type: string
+          description: Fecha en la que fue expedido el certificado
+        entidadExpedidora:
+          type: string
+          description: Entidad que entrego el certificado
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
