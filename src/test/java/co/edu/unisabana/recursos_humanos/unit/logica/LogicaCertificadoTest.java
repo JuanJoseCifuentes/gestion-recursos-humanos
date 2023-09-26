@@ -1,15 +1,13 @@
-package co.edu.unisabana.recursos_humanos.logica;
+package co.edu.unisabana.recursos_humanos.unit.logica;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+
+@ExtendWith(MockitoExtension.class)
 @ActiveProfiles(profiles = "test")
 class LogicaCertificadoTest {
 
