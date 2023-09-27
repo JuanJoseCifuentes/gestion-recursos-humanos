@@ -1,9 +1,7 @@
 package co.edu.unisabana.recursos_humanos.integration.controlador;
 
-import co.edu.unisabana.recursos_humanos.controlador.dto.EmpleadoDTO;
 import co.edu.unisabana.recursos_humanos.controlador.dto.Respuesta;
 import co.edu.unisabana.recursos_humanos.controlador.dto.RolDTO;
-import co.edu.unisabana.recursos_humanos.db.entidad.RolDB;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -40,15 +38,13 @@ class GestionRolControllerTest {
     @Test
     public void Dado_rol_invalido_Cuando_hacer_peticion_post_Entonces_lanza_excepcion() {
 
-        /*RolDTO rol = new RolDTO();
-        rol.setId(1);
-        rol.setResponsabilidades("Cuidar porteria");
+        RolDTO rol = new RolDTO();
 
         restTemplate.postForEntity("/rol/crear", rol, Respuesta.class);
 
         ResponseEntity<Respuesta> respuesta = restTemplate.postForEntity("/rol/crear", rol, Respuesta.class);
 
-        Assertions.assertEquals("Fallido", Objects.requireNonNull(respuesta.getBody()).getStatus());*/
+        Assertions.assertEquals("Fallido", Objects.requireNonNull(respuesta.getBody()).getStatus());
     }
 
     @Test
