@@ -22,7 +22,7 @@ public class LogicaCertificado {
         this.empleadoRepository = empleadoRepository;
     }
 
-    public void crearCertificado(CertificadoDTO certificado){
+    public CertificadoDB crearCertificado(CertificadoDTO certificado){
         CertificadoDB dbCertificado = new CertificadoDB();
         EmpleadoDB empleadoReferencia = empleadoRepository.getReferenceById(certificado.getIdEmpleado());
 
@@ -35,6 +35,8 @@ public class LogicaCertificado {
         dbCertificado.setFechaActualizacion(LocalDateTime.now());
         dbCertificado.setFechaCreacion(LocalDateTime.now());
         certificadoRepository.save(dbCertificado);
+
+        return dbCertificado;
     }
 
     public List<CertificadoDTO> buscarCertificadosTodos() {
@@ -58,7 +60,7 @@ public class LogicaCertificado {
     }
 
     public void eliminarCertificado(int id) {
-        empleadoRepository.deleteById(id);
+        certificadoRepository.deleteById(id);
     }
 
     private static CertificadoDTO transformarToDTO(CertificadoDB certificado) {

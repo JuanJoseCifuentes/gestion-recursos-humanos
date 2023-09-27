@@ -1,0 +1,38 @@
+name: JaCoCo Coverage
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  jacoco-java-gradle:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '19'
+
+      - name: Permisos Gradlew
+        run: chmod +x gradlew
+
+      - name: Correr Test
+        run: ./gradlew test
+
+      - name: Correr coverage Test
+        run: ./gradlew jacocoTestReport
+
+      - name: Generar JaCoCo Badge
+        uses: cicirello/jacoco-badge-generator@v2
+        with:
+          generate-branches-badge: true
+          jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv

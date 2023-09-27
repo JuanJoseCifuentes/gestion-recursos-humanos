@@ -39,11 +39,11 @@ class LogicaEmpleadoTest {
         rol.setId(1);
 
         List<EmpleadoDB> listaDB = new ArrayList<>();
-        EmpleadoDB empleado1 = new EmpleadoDB();
-        empleado1.setRol(rol);
-        listaDB.add(empleado1);
-        listaDB.add(empleado1);
-        listaDB.add(empleado1);
+        EmpleadoDB empleado = new EmpleadoDB();
+        empleado.setRol(rol);
+        listaDB.add(empleado);
+        listaDB.add(empleado);
+        listaDB.add(empleado);
 
         when(empleadoRepository.findAll()).thenReturn(listaDB);
 
