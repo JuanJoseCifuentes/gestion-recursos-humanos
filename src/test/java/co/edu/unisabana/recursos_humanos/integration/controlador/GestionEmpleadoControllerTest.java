@@ -233,6 +233,17 @@ class GestionEmpleadoControllerTest {
     }
 
     @Test
+    public void Dado_empleado_y_requisito_db_inexistentes_Cuando_hacer_peticion_delete_con_id_Entonces_lanza_excepcion() {
+        int id = (int) Math.floor(Math.random() * (999999) + 1);
+
+        HttpEntity<Object> request = new HttpEntity<>("");
+
+        ResponseEntity<Respuesta> respuesta = restTemplate.exchange("/empleado/eliminar/id?id="+id, HttpMethod.DELETE, request, Respuesta.class);
+
+        assertEquals("Fallido", Objects.requireNonNull(respuesta.getBody()).getStatus());
+    }
+
+    @Test
     public void Dado_empleado_y_requisito_db_existentes_Cuando_hacer_peticion_delete_con_id_correcto_Entonces_elimina_empleado() {
         int id = (int) Math.floor(Math.random() * (999999) + 1);
 
@@ -262,16 +273,5 @@ class GestionEmpleadoControllerTest {
         assertEquals("Exitoso", Objects.requireNonNull(respuesta.getBody()).getStatus());
         assertNotEquals(listaExistente.getBody(),listaEliminado.getBody());
         assertTrue(Objects.requireNonNull(listaEliminado.getBody()).isEmpty());
-    }
-
-    @Test
-    public void Dado_empleado_y_requisito_db_inexistentes_Cuando_hacer_peticion_delete_con_id_Entonces_lanza_excepcion() {
-        int id = (int) Math.floor(Math.random() * (999999) + 1);
-
-        HttpEntity<Object> request = new HttpEntity<>("");
-
-        ResponseEntity<Respuesta> respuesta = restTemplate.exchange("/empleado/eliminar/id?id="+id, HttpMethod.DELETE, request, Respuesta.class);
-
-        assertEquals("Fallido", Objects.requireNonNull(respuesta.getBody()).getStatus());
     }
 }
