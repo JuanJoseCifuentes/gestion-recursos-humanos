@@ -3,7 +3,6 @@ package co.edu.unisabana.recursos_humanos.integration.controlador;
 import co.edu.unisabana.recursos_humanos.controlador.dto.EmpleadoDTO;
 import co.edu.unisabana.recursos_humanos.controlador.dto.PerfilEmpleadoDTO;
 import co.edu.unisabana.recursos_humanos.controlador.dto.Respuesta;
-import co.edu.unisabana.recursos_humanos.db.entidad.EmpleadoDB;
 import co.edu.unisabana.recursos_humanos.db.entidad.RolDB;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
