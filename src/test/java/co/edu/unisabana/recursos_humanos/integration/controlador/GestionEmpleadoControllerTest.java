@@ -108,7 +108,7 @@ class GestionEmpleadoControllerTest {
         dto.setEdad(34);
         dto.setCorreo("alejandro@correo.com");
         dto.setTelefono(310123123);
-        dto.setIdRol(1);
+        dto.setIdRol(100);
         dto.setDireccion("Zipaquira");
         dto.setCedula(1002586540);
 
@@ -248,7 +248,7 @@ class GestionEmpleadoControllerTest {
         int id = (int) Math.floor(Math.random() * (999999) + 1);
 
         RolDB rol = new RolDB();
-        rol.setId(1);
+        rol.setId(20);
 
         restTemplate.postForEntity("/rol/crear", rol, Respuesta.class);
 
@@ -258,7 +258,7 @@ class GestionEmpleadoControllerTest {
         dto.setEdad(34);
         dto.setCorreo("alejandro@correo.com");
         dto.setTelefono(310123123);
-        dto.setIdRol(1);
+        dto.setIdRol(20);
         dto.setDireccion("Zipaquira");
         dto.setCedula(1002586540);
 
