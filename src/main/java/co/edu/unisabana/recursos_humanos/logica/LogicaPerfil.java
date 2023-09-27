@@ -42,17 +42,21 @@ public class LogicaPerfil {
         }
     }
 
-    public void crearPerfil(PerfilEmpleadoDTO perfilEmpleadoDTO){
+    public PerfilEmpleadoDB crearPerfil(PerfilEmpleadoDTO perfilEmpleadoDTO){
         PerfilEmpleadoDB perfil = new PerfilEmpleadoDB();
         EmpleadoDB empleado = empleadoRepository.getReferenceById(perfilEmpleadoDTO.getIdEmpleado());
+
+        LocalDateTime now = LocalDateTime.now();
 
         perfil.setId(perfilEmpleadoDTO.getId());
         perfil.setEmpleado(empleado);
         perfil.setHabilidades(perfilEmpleadoDTO.getHabilidades());
         perfil.setAnosExperiencia(perfilEmpleadoDTO.getAnosExperiencia());
-        perfil.setFechaActualizacion(LocalDateTime.now());
-        perfil.setFechaCreacion(LocalDateTime.now());
+        perfil.setFechaActualizacion(now);
+        perfil.setFechaCreacion(now);
         perfilEmpleadoRepository.save(perfil);
+
+        return perfil;
     }
 
     public void actualizarPerfil (int id, PerfilEmpleadoDTO nuevoPerfil){
