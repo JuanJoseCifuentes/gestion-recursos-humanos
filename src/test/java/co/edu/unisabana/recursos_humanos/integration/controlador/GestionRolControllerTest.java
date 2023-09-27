@@ -1,19 +1,25 @@
 package co.edu.unisabana.recursos_humanos.integration.controlador;
 
+import co.edu.unisabana.recursos_humanos.controlador.dto.EmpleadoDTO;
 import co.edu.unisabana.recursos_humanos.controlador.dto.Respuesta;
 import co.edu.unisabana.recursos_humanos.controlador.dto.RolDTO;
+import co.edu.unisabana.recursos_humanos.db.entidad.RolDB;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 import java.util.Objects;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -75,5 +81,71 @@ class GestionRolControllerTest {
         ResponseEntity<List> lista = restTemplate.getForEntity("/rol/buscar/todos" , List.class);
 
         Assertions.assertFalse(lista.getBody().isEmpty());
+    }
+
+    @Test
+    public void Dado_rol_requisito_db_existentes_Cuando_hacer_peticion_delete_con_id_correcto_Entonces_elimina_rol() {
+        int id = (int) Math.floor(Math.random() * (999999) + 1);
+
+        RolDB rol = new RolDB();
+        rol.setId(id);
+
+        restTemplate.postForEntity("/rol/crear", rol, Respuesta.class);
+
+        ResponseEntity<List> listaExistente = restTemplate.getForEntity("/rol/buscar/id?id="+id, List.class);
+
+        HttpEntity<Object> request = new HttpEntity<>("");
+
+        ResponseEntity<Respuesta> respuesta = restTemplate.exchange("/rol/eliminar/id?id="+id, HttpMethod.DELETE, request, Respuesta.class);
+        ResponseEntity<List> listaEliminado = restTemplate.getForEntity("/rol/buscar/id?id=" + id, List.class);
+
+        assertEquals("Exitoso", Objects.requireNonNull(respuesta.getBody()).getStatus());
+        assertNotEquals(listaExistente.getBody(),listaEliminado.getBody());
+        assertTrue(Objects.requireNonNull(listaEliminado.getBody()).isEmpty());
+    }
+
+    @Test
+    public void Dado_rol_requisito_db_inexistentes_Cuando_hacer_peticion_delete_con_id_Entonces_lanza_excepcion() {
+        int id = (int) Math.floor(Math.random() * (999999) + 1);
+
+        HttpEntity<Object> request = new HttpEntity<>("");
+
+        ResponseEntity<Respuesta> respuesta = restTemplate.exchange("/rol/eliminar/id?id="+id, HttpMethod.DELETE, request, Respuesta.class);
+
+        assertEquals("Fallido", Objects.requireNonNull(respuesta.getBody()).getStatus());
+    }
+
+    @Test
+    public void Dado_rol_existente_dto_valido_Cuando_hacer_peticion_put_actualizar_Entonces_actualiza_informacion() {
+        int id = (int) Math.floor(Math.random() * (999999) + 1);
+
+        RolDTO rol = new RolDTO();
+        rol.setId(id);
+
+        restTemplate.postForEntity("/rol/crear", rol, Respuesta.class);
+
+        rol.setResponsabilidades("Limpiar los vidrios del edificio");
+
+        HttpEntity<RolDTO> request = new HttpEntity<>(rol);
+
+        ResponseEntity<Respuesta> respuesta = restTemplate.exchange("/rol/actualizar/", HttpMethod.PUT, request, Respuesta.class);
+        ResponseEntity<List> lista = restTemplate.getForEntity("/rol/buscar/id?id=" + id, List.class);
+
+        assertEquals("Exitoso", Objects.requireNonNull(respuesta.getBody()).getStatus());
+        Assertions.assertTrue(Objects.requireNonNull(lista.getBody()).get(0).toString().contains("Limpiar los vidrios del edificio"));
+    }
+
+    @Test
+    public void Dado_rol_inexistente_Cuando_hacer_peticion_put_Entonces_lanza_excepcion() {
+
+        RolDTO rol = new RolDTO();
+
+        rol.setId(4);
+
+        HttpEntity<RolDTO> request = new HttpEntity<>(rol);
+
+        ResponseEntity<Respuesta> respuesta = restTemplate.exchange("/rol/actualizar/", HttpMethod.PUT, request, Respuesta.class);
+
+        assertEquals("Fallido", Objects.requireNonNull(respuesta.getBody()).getStatus());
     }
 }
