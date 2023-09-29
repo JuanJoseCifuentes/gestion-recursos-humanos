@@ -2,11 +2,24 @@ plugins {
     java
     id("org.springframework.boot") version "2.7.15"
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
+    id("info.solidsoft.pitest") version "1.9.0"
     jacoco
 }
 
+val clasesExcluidas = setOf(
+        "**.dto.**",
+        "**.entidad.**"
+)
 group = "co.edu.unisabana"
+
 version = "0.0.1-SNAPSHOT"
+
+
+
+pitest {
+    junit5PluginVersion = "1.0.0"
+    excludedClasses.set(clasesExcluidas)
+}
 
 java {
     sourceCompatibility = JavaVersion.VERSION_19
