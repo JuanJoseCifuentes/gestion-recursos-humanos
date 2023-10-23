@@ -36,6 +36,9 @@ class LogicaCertificadoTest {
 
     @Test
     void Dado_certificado_dto_Cuando_logica_crear_Entonces_sube_bd() {
+        EmpleadoDB empleado = new EmpleadoDB();
+        empleado.setId(1);
+
         CertificadoDTO dto = new CertificadoDTO();
         dto.setId((int) Math.floor(Math.random() * (999999) + 1));
         dto.setDescripcion("Certificado que valida la maestría sobre AWS");

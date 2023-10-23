@@ -1,0 +1,592 @@
+{
+	"info": {
+		"_postman_id": "6fc2b7d0-4498-4397-bc25-20fdd9c07025",
+		"name": "Hr",
+		"description": "En este folder se encuentran todas las peticiones necesarias para probar cada uno de los endpoints de la API de Recursos Humanos.\n\nNótese que correr todas las peticiones automáticamente puede generar problemas, pues algunas peticiones se encargan de crear o eliminar objetos con base a unos ID predeterminados, lo que puede resultar en intentar crear un objeto con un ID ya existente, o en intentar eliminar otro en base a un ID que ya no existe en la base de datos.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29410264"
+	},
+	"item": [
+		{
+			"name": "empleado",
+			"item": [
+				{
+					"name": "actualizar_empleado_rol",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/empleado/actualizar/rol?id=1234&idNuevoRol=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empleado",
+								"actualizar",
+								"rol"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1234"
+								},
+								{
+									"key": "idNuevoRol",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar_empleado_info",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : 1234,\r\n    \"nombre\" : \"Juan Jose Cifuentes\",\r\n    \"edad\" : 20,\r\n    \"correo\" : \"jcifuentesc03@gmail.com\",\r\n    \"telefono\" : 987654321,\r\n    \"idRol\" : 1,\r\n    \"direccion\" : \"Chia, Cundinamarca\",\r\n    \"cedula\" : 1013258540\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/empleado/actualizar/informacion_personal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empleado",
+								"actualizar",
+								"informacion_personal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar_empleado",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/empleado/eliminar/id?id=1235",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empleado",
+								"eliminar",
+								"id"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1235"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "subir_empleado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : 1235,\r\n    \"nombre\" : \"Tomas Candelo\",\r\n    \"edad\" : 20,\r\n    \"correo\" : \"tomas.candelo@gmail.com\",\r\n    \"telefono\" : 1122334455,\r\n    \"idRol\" : 4,\r\n    \"direccion\" : \"Zipaquira, Cundinamarca\",\r\n    \"cedula\" : 1000252619\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/empleado/crear",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empleado",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar_empleado_todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/empleado/buscar/todos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empleado",
+								"buscar",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar_empleado_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/empleado/buscar/id?id=1234",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empleado",
+								"buscar",
+								"id"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1234"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rol",
+			"item": [
+				{
+					"name": "buscar_rol_todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/rol/buscar/todos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"rol",
+								"buscar",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar_rol_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/rol/buscar/id?id=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"rol",
+								"buscar",
+								"id"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "subir_rol",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\":5,\r\n    \"responsabilidades\":\"Secretaria del gerente general\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/rol/crear",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"rol",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar_rol",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\":5,\r\n    \"responsabilidades\":\"Secretaria del gerente regional\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/rol/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"rol",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar_rol",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\":5,\r\n    \"responsabilidades\":\"Secretaria del gerente regional\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/rol/eliminar/id?id=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"rol",
+								"eliminar",
+								"id"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "certificado",
+			"item": [
+				{
+					"name": "subir_certificado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : 8,\r\n    \"tipo\" : \"Curso Virtual\",\r\n    \"descripcion\" : \"Certificacion por cumplir el curso de Skills For All introduccion a la seguridad de redes\",\r\n    \"idEmpleado\" : 1234,\r\n    \"fechaExpedicion\" : \"2022-01-01T00:00:00\",\r\n    \"entidadExpedidora\" : \"Cisco\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/certificado/subir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"certificado",
+								"subir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar_certificado",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/certificado/eliminar/id?id=8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"certificado",
+								"eliminar",
+								"id"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar_certificado_todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/certificado/buscar/todos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"certificado",
+								"buscar",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar_certificado_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/empleado/buscar/id_certificado?id=8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empleado",
+								"buscar",
+								"id_certificado"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "perfil",
+			"item": [
+				{
+					"name": "buscar_perfil_todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/perfil/buscar/todos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"perfil",
+								"buscar",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar_perfil_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/perfil/buscar/id?id=4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"perfil",
+								"buscar",
+								"id"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "subir_perfil",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 4,\r\n    \"idEmpleado\": 1235,\r\n    \"habilidades\": \"lider y responsable\",\r\n    \"anosExperiencia\": 4\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/perfil/subir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"perfil",
+								"subir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar_perfil",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 4,\r\n    \"idEmpleado\": 1235,\r\n    \"habilidades\": \"lider, responsable y competitivo\",\r\n    \"anosExperiencia\": 7\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/perfil/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"perfil",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar_perfil",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/perfil/eliminar?id=4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"perfil",
+								"eliminar"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

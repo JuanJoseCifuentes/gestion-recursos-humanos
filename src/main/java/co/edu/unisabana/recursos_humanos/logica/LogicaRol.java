@@ -38,7 +38,7 @@ public class LogicaRol {
         }
     }
 
-    public void crearRol(RolDTO rolDTO){
+    public RolDB crearRol(RolDTO rolDTO){
         RolDB rol = new RolDB();
         rol.setId(rolDTO.getId());
         rol.setResponsabilidades(rolDTO.getResponsabilidades());
@@ -46,6 +46,7 @@ public class LogicaRol {
         rol.setFechaActualizacion(LocalDateTime.now());
         rolRepository.save(rol);
 
+        return rol;
     }
 
     public void eliminarRol(int id){
