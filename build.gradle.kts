@@ -43,6 +43,7 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok")
     implementation("mysql:mysql-connector-java:8.0.30")
     testImplementation("com.h2database:h2:2.2.220")
+    implementation("org.springframework.boot:spring-boot-starter-security")
 }
 
 tasks.withType<Test> {
