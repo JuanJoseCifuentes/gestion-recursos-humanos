@@ -30,7 +30,7 @@ class GestionRolControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void Dado_rol_valido_Cuando_hacer_peticion_post_Entonces_guarda_correctamente() {
+    void Dado_rol_valido_Cuando_hacer_peticion_post_Entonces_guarda_correctamente() {
 
         RolDTO rol = new RolDTO();
         rol.setId((int) Math.floor(Math.random() * (999999) + 1));
@@ -42,7 +42,7 @@ class GestionRolControllerTest {
     }
 
     @Test
-    public void Dado_rol_invalido_Cuando_hacer_peticion_post_Entonces_lanza_excepcion() {
+    void Dado_rol_invalido_Cuando_hacer_peticion_post_Entonces_lanza_excepcion() {
 
         RolDTO rol = new RolDTO();
 
@@ -54,7 +54,7 @@ class GestionRolControllerTest {
     }
 
     @Test
-    public void Dado_rol_bd_existente_Cuando_hacer_peticion_buscar_por_id_Entonces_recupera_dto(){
+    void Dado_rol_bd_existente_Cuando_hacer_peticion_buscar_por_id_Entonces_recupera_dto(){
 
         RolDTO rol = new RolDTO();
         int id = (int) Math.floor(Math.random() * (999999) + 1);
@@ -69,7 +69,7 @@ class GestionRolControllerTest {
     }
 
     @Test
-    public void Dado_roles_en_bd_Cuando_hacer_peticion_buscar_todos_Entonces_recupera_dtos(){
+    void Dado_roles_en_bd_Cuando_hacer_peticion_buscar_todos_Entonces_recupera_dtos(){
 
         RolDTO rol = new RolDTO();
         int id = (int) Math.floor(Math.random() * (999999) + 1);
@@ -84,7 +84,7 @@ class GestionRolControllerTest {
     }
 
     @Test
-    public void Dado_rol_requisito_db_existentes_Cuando_hacer_peticion_delete_con_id_correcto_Entonces_elimina_rol() {
+    void Dado_rol_requisito_db_existentes_Cuando_hacer_peticion_delete_con_id_correcto_Entonces_elimina_rol() {
         int id = (int) Math.floor(Math.random() * (999999) + 1);
 
         RolDB rol = new RolDB();
@@ -105,7 +105,7 @@ class GestionRolControllerTest {
     }
 
     @Test
-    public void Dado_rol_requisito_db_inexistentes_Cuando_hacer_peticion_delete_con_id_Entonces_lanza_excepcion() {
+    void Dado_rol_requisito_db_inexistentes_Cuando_hacer_peticion_delete_con_id_Entonces_lanza_excepcion() {
         int id = (int) Math.floor(Math.random() * (999999) + 1);
 
         HttpEntity<Object> request = new HttpEntity<>("");
@@ -116,7 +116,7 @@ class GestionRolControllerTest {
     }
 
     @Test
-    public void Dado_rol_existente_dto_valido_Cuando_hacer_peticion_put_actualizar_Entonces_actualiza_informacion() {
+    void Dado_rol_existente_dto_valido_Cuando_hacer_peticion_put_actualizar_Entonces_actualiza_informacion() {
         int id = (int) Math.floor(Math.random() * (999999) + 1);
 
         RolDTO rol = new RolDTO();
@@ -136,8 +136,7 @@ class GestionRolControllerTest {
     }
 
     @Test
-    public void Dado_rol_inexistente_Cuando_hacer_peticion_put_Entonces_lanza_excepcion() {
-
+    void Dado_rol_inexistente_Cuando_hacer_peticion_put_Entonces_lanza_excepcion() {
         RolDTO rol = new RolDTO();
 
         rol.setId(4);

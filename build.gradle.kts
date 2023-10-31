@@ -4,6 +4,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
     id("info.solidsoft.pitest") version "1.9.0"
     jacoco
+    id("org.sonarqube") version "4.4.1.3373"
 }
 
 val clasesExcluidas = setOf(
@@ -38,12 +39,15 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    compileOnly("org.projectlombok:lombok")
-    annotationProcessor("org.projectlombok:lombok")
-    implementation("mysql:mysql-connector-java:8.0.30")
-    testImplementation("com.h2database:h2:2.2.220")
     implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("mysql:mysql-connector-java:8.0.30")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("com.h2database:h2:2.2.220")
+
+    compileOnly("org.projectlombok:lombok")
+
+    annotationProcessor("org.projectlombok:lombok")
 }
 
 tasks.withType<Test> {
@@ -72,5 +76,11 @@ tasks.withType<JacocoReport> {
                 exclude( "**/entidad**")
             }
         }))
+    }
+}
+
+sonarqube {
+    properties {
+        property("sonar.projectName", "RH-Manager-APP")
     }
 }

@@ -10,8 +10,10 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/perfil")
 public class GestionPerfilController {
+    private static final String EXITOSO = "Exitoso";
+    private static final String FALLIDO = "Fallido";
 
-    public LogicaPerfil logica;
+    private final LogicaPerfil logica;
 
     public GestionPerfilController(LogicaPerfil logica) {
         this.logica = logica;
@@ -33,9 +35,9 @@ public class GestionPerfilController {
     public Respuesta subirRol(@RequestBody PerfilEmpleadoDTO perfil) {
         try {
             logica.crearPerfil(perfil);
-            return new Respuesta("Exitoso","El perfil se ha creado correctamente.");
+            return new Respuesta(EXITOSO,"El perfil se ha creado correctamente.");
         } catch (Exception e) {
-            return new Respuesta("Fallido", "Algo ha salido mal. No se ha podido crear el perfil");
+            return new Respuesta(FALLIDO, "Algo ha salido mal. No se ha podido crear el perfil");
         }
     }
 
@@ -43,9 +45,9 @@ public class GestionPerfilController {
     public Respuesta actualizarPerfil (@RequestBody PerfilEmpleadoDTO perfilNuevo){
         try {
             logica.actualizarPerfil(perfilNuevo.getId(), perfilNuevo);
-            return new Respuesta("Exitoso", "El perfil ha sido eliminado correctamente.");
+            return new Respuesta(EXITOSO, "El perfil ha sido eliminado correctamente.");
         } catch (Exception e){
-            return new Respuesta("Fallido","Algo ha salido mal, no se ha podido eliminar el perfil.");
+            return new Respuesta(FALLIDO,"Algo ha salido mal, no se ha podido eliminar el perfil.");
         }
     }
 
@@ -53,9 +55,9 @@ public class GestionPerfilController {
     public Respuesta eliminarPerfil (@RequestParam int id){
         try {
             logica.eliminarPerfil(id);
-            return new Respuesta("Exitoso", "El perfil ha sido eliminado correctamente.");
+            return new Respuesta(EXITOSO, "El perfil ha sido eliminado correctamente.");
         } catch (Exception e){
-            return new Respuesta("Fallido","Algo ha salido mal, no se ha podido eliminar el perfil.");
+            return new Respuesta(FALLIDO,"Algo ha salido mal, no se ha podido eliminar el perfil.");
         }
 
     }

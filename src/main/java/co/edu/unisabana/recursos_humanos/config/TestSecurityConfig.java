@@ -10,6 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class TestSecurityConfig{
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer(){
-        return (web) -> web.ignoring().antMatchers("/**");
+        return web -> web.ignoring().antMatchers("/**");
     }
 }
