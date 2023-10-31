@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class Respuesta {
-    public String status;
-    public String mensaje;
+    private String status;
+    private String mensaje;
 
     public Respuesta(String status, String mensaje) {
         this.status = status;

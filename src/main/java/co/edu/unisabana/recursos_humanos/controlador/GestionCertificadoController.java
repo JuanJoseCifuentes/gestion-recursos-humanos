@@ -10,8 +10,10 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/certificado")
 public class GestionCertificadoController {
+    private static final String EXITOSO = "Exitoso";
+    private static final String FALLIDO = "Fallido";
 
-    public LogicaCertificado logica;
+    private final LogicaCertificado logica;
 
     public GestionCertificadoController(LogicaCertificado logica) {
         this.logica = logica;
@@ -31,9 +33,9 @@ public class GestionCertificadoController {
     public Respuesta subirCertificado(@RequestBody CertificadoDTO certificado) {
         try {
             logica.crearCertificado(certificado);
-            return new Respuesta("Exitoso","El certificado se ha creado correctamente.");
+            return new Respuesta(EXITOSO,"El certificado se ha creado correctamente.");
         } catch (Exception e) {
-            return new Respuesta("Fallido", "Algo ha salido mal. No se ha podido crear el certificado");
+            return new Respuesta(FALLIDO, "Algo ha salido mal. No se ha podido crear el certificado");
         }
     }
 
@@ -41,9 +43,9 @@ public class GestionCertificadoController {
     public Respuesta eliminarCertificado(@RequestParam int id){
         try {
             logica.eliminarCertificado(id);
-            return new Respuesta("Exitoso", "El certificado se ha eliminado correctamente.");
+            return new Respuesta(EXITOSO, "El certificado se ha eliminado correctamente.");
         } catch (Exception e) {
-            return new Respuesta("Fallido", "Algo ha salido mal. No se ha podido eliminar el certificado.");
+            return new Respuesta(FALLIDO, "Algo ha salido mal. No se ha podido eliminar el certificado.");
         }
     }
 }

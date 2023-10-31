@@ -194,7 +194,7 @@ class GestionCertificadoControllerTest {
     }
 
     @Test
-    public void Dado_certificado_y_requisitos_db_inexistentes_Cuando_hacer_peticion_delete_con_id_Entonces_lanza_excepcion() {
+    void Dado_certificado_y_requisitos_db_inexistentes_Cuando_hacer_peticion_delete_con_id_Entonces_lanza_excepcion() {
         int id = (int) Math.floor(Math.random() * (999999) + 1);
 
         HttpEntity<Object> request = new HttpEntity<>("");

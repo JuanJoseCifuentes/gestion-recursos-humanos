@@ -10,8 +10,10 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/rol")
 public class GestionRolController {
+    private static final String EXITOSO = "Exitoso";
+    private static final String FALLIDO = "Fallido";
 
-    public LogicaRol logica;
+    private final LogicaRol logica;
 
     public GestionRolController(LogicaRol logica) {
         this.logica = logica;
@@ -21,9 +23,9 @@ public class GestionRolController {
     public Respuesta crearRol(@RequestBody RolDTO rol) {
         try {
             logica.crearRol(rol);
-            return new Respuesta("Exitoso","El rol se ha creado correctamente.");
+            return new Respuesta(EXITOSO,"El rol se ha creado correctamente.");
         } catch (Exception e) {
-            return new Respuesta("Fallido", "Algo ha salido mal. No se ha podido crear el rol");
+            return new Respuesta(FALLIDO, "Algo ha salido mal. No se ha podido crear el rol");
         }
     }
 
@@ -41,9 +43,9 @@ public class GestionRolController {
     public Respuesta actualizarRol(@RequestBody RolDTO nuevoRol){
         try {
             logica.actualizarRol(nuevoRol.getId(), nuevoRol);
-            return new Respuesta("Exitoso", "El rol ha sido actualizado correctamente.");
+            return new Respuesta(EXITOSO, "El rol ha sido actualizado correctamente.");
         } catch (Exception e) {
-            return new Respuesta("Fallido", "Algo ha salido mal. No se ha podido actualizar el rol.");
+            return new Respuesta(FALLIDO, "Algo ha salido mal. No se ha podido actualizar el rol.");
         }
     }
 
@@ -51,9 +53,9 @@ public class GestionRolController {
     public Respuesta eliminarRol(@RequestParam int id){
         try {
             logica.eliminarRol(id);
-            return new Respuesta("Exitoso", "El rol ha sido eliminado correctamente.");
+            return new Respuesta(EXITOSO, "El rol ha sido eliminado correctamente.");
         } catch (Exception e) {
-            return new Respuesta("Fallido", "Algo ha salido mal. No se ha podido eliminar el rol.");
+            return new Respuesta(FALLIDO, "Algo ha salido mal. No se ha podido eliminar el rol.");
         }
     }
 }

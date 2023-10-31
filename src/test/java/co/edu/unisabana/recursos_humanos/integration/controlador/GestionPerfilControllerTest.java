@@ -109,7 +109,7 @@ class GestionPerfilControllerTest {
     }
 
     @Test
-    public void Dado_perfil_invalido_Cuando_hacer_peticion_post_Entonces_lanza_excepcion(){
+    void Dado_perfil_invalido_Cuando_hacer_peticion_post_Entonces_lanza_excepcion(){
         PerfilEmpleadoDTO dto = new PerfilEmpleadoDTO();
         dto.setId((int) Math.floor(Math.random() * (999999) + 1));
         dto.setIdEmpleado(1235);

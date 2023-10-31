@@ -29,7 +29,7 @@ class GestionEmpleadoControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void Dado_empleados_en_bd_Cuando_hacer_peticion_buscar_todos_Entonces_recupera_dtos(){
+    void Dado_empleados_en_bd_Cuando_hacer_peticion_buscar_todos_Entonces_recupera_dtos(){
         RolDB rol = new RolDB();
         rol.setId(1);
 
@@ -53,7 +53,7 @@ class GestionEmpleadoControllerTest {
     }
 
     @Test
-    public void Dado_empleado_bd_existente_Cuando_hacer_peticion_buscar_por_id_Entonces_recupera_dto(){
+    void Dado_empleado_bd_existente_Cuando_hacer_peticion_buscar_por_id_Entonces_recupera_dto(){
         RolDB rol = new RolDB();
         rol.setId(1);
 
@@ -79,7 +79,7 @@ class GestionEmpleadoControllerTest {
     }
 
     @Test
-    public void Dado_empleado_valido_Cuando_hacer_peticion_post_Entonces_guarda_correctamente() {
+    void Dado_empleado_valido_Cuando_hacer_peticion_post_Entonces_guarda_correctamente() {
         RolDB rol = new RolDB();
         rol.setId(1);
 
@@ -101,7 +101,7 @@ class GestionEmpleadoControllerTest {
     }
 
     @Test
-    public void Dado_empleado_invalido_Cuando_hacer_peticion_post_Entonces_lanza_excepcion() {
+    void Dado_empleado_invalido_Cuando_hacer_peticion_post_Entonces_lanza_excepcion() {
         EmpleadoDTO dto = new EmpleadoDTO();
         dto.setId((int) Math.floor(Math.random() * (999999) + 1));
         dto.setNombre("Alejandro Gonzáles");
@@ -118,7 +118,7 @@ class GestionEmpleadoControllerTest {
     }
 
     @Test
-    public void Dado_empleado_existente_dto_valido_Cuando_hacer_peticion_put_informacion_personal_Entonces_actualiza_informacion() {
+    void Dado_empleado_existente_dto_valido_Cuando_hacer_peticion_put_informacion_personal_Entonces_actualiza_informacion() {
         int id = (int) Math.floor(Math.random() * (999999) + 1);
 
         RolDB rol = new RolDB();
@@ -149,7 +149,7 @@ class GestionEmpleadoControllerTest {
     }
 
     @Test
-    public void Dado_empleado_inexistente_Cuando_hacer_peticion_put_informacion_personal_Entonces_lanza_excepcion() {
+    void Dado_empleado_inexistente_Cuando_hacer_peticion_put_informacion_personal_Entonces_lanza_excepcion() {
         int id = (int) Math.floor(Math.random() * (999999) + 1);
 
         EmpleadoDTO dto = new EmpleadoDTO();
@@ -169,7 +169,7 @@ class GestionEmpleadoControllerTest {
     }
 
     @Test
-    public void Dado_empleado_y_roles_db_existentes_Cuando_hacer_peticion_put_rol_Entonces_actualiza_rol() {
+    void Dado_empleado_y_roles_db_existentes_Cuando_hacer_peticion_put_rol_Entonces_actualiza_rol() {
         int id = (int) Math.floor(Math.random() * (999999) + 1);
 
         RolDB rol = new RolDB();
@@ -203,7 +203,7 @@ class GestionEmpleadoControllerTest {
     }
 
     @Test
-    public void Dado_empleado_y_roles_db_inexistentes_Cuando_hacer_peticion_put_rol_Entonces_lanza_excepcion() {
+    void Dado_empleado_y_roles_db_inexistentes_Cuando_hacer_peticion_put_rol_Entonces_lanza_excepcion() {
         int id = (int) Math.floor(Math.random() * (999999) + 1);
 
         RolDB rol = new RolDB();
@@ -233,7 +233,7 @@ class GestionEmpleadoControllerTest {
     }
 
     @Test
-    public void Dado_empleado_y_requisito_db_inexistentes_Cuando_hacer_peticion_delete_con_id_Entonces_lanza_excepcion() {
+    void Dado_empleado_y_requisito_db_inexistentes_Cuando_hacer_peticion_delete_con_id_Entonces_lanza_excepcion() {
         int id = (int) Math.floor(Math.random() * (999999) + 1);
 
         HttpEntity<Object> request = new HttpEntity<>("");
@@ -244,7 +244,7 @@ class GestionEmpleadoControllerTest {
     }
 
     @Test
-    public void Dado_empleado_y_requisito_db_existentes_Cuando_hacer_peticion_delete_con_id_correcto_Entonces_elimina_empleado() {
+    void Dado_empleado_y_requisito_db_existentes_Cuando_hacer_peticion_delete_con_id_correcto_Entonces_elimina_empleado() {
         int id = (int) Math.floor(Math.random() * (999999) + 1);
 
         RolDB rol = new RolDB();
