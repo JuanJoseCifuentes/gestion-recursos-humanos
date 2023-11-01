@@ -61,6 +61,8 @@ tasks.jacocoTestReport {
     dependsOn(tasks.test)
     reports {
         csv.required.set(true)
+        xml.required.set(true)
+        html.required.set(true)
     }
 }
 
@@ -82,5 +84,7 @@ tasks.withType<JacocoReport> {
 sonarqube {
     properties {
         property("sonar.projectName", "RH-Manager-APP")
+        property("sonar.java.coveragePlugin", "jacoco")
+        property("sonar.coverage.jacoco.xmlReportPath", "${project.buildDir}/reports/jacoco.xml")
     }
 }
