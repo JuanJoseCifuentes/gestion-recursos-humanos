@@ -1,0 +1,35 @@
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+    </appender>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/logback.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/logback.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="co.edu.unisabana.recursos_humanos.controlador.GestionCertificadoController" level="TRACE">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="co.edu.unisabana.recursos_humanos.controlador.GestionEmpleadoController" level="TRACE">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="co.edu.unisabana.recursos_humanos.controlador.GestionPerfilController" level="TRACE">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="co.edu.unisabana.recursos_humanos.controlador.GestionRolController" level="TRACE">
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
+
