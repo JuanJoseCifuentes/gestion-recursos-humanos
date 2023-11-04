@@ -27,11 +27,6 @@ public class GestionCertificadoController {
 
     @GetMapping(path = "/buscar/todos")
     public List<CertificadoDTO> buscarCertificados() {
-        logger.trace("TRACE yuhu");
-        logger.debug("debug yuhu");
-        logger.info("info yuhu");
-        logger.warn("warning yuhu");
-        logger.error("error yuhu");
         return logica.buscarCertificadosTodos();
     }
 
@@ -44,8 +39,10 @@ public class GestionCertificadoController {
     public Respuesta subirCertificado(@RequestBody CertificadoDTO certificado) {
         try {
             logica.crearCertificado(certificado);
+            logger.info("Se ha creado un nuevo CERTIFICADO para el EMPLEADO ID: "+ certificado.getIdEmpleado() + ". ID: "+ certificado.getId());
             return new Respuesta(EXITOSO,"El certificado se ha creado correctamente.");
         } catch (Exception e) {
+            logger.error("Error al crear un nuevo CERTIFICADO para el EMPLEADO ID: "+ certificado.getIdEmpleado() +". ID: "+ certificado.getId());
             return new Respuesta(FALLIDO, "Algo ha salido mal. No se ha podido crear el certificado");
         }
     }
@@ -54,8 +51,10 @@ public class GestionCertificadoController {
     public Respuesta eliminarCertificado(@RequestParam int id){
         try {
             logica.eliminarCertificado(id);
+            logger.warn("Se ha eliminado el CERTIFICADO. ID: "+ id);
             return new Respuesta(EXITOSO, "El certificado se ha eliminado correctamente.");
         } catch (Exception e) {
+            logger.error("Error al eliminar el CERTIFICADO. ID: "+ id);
             return new Respuesta(FALLIDO, "Algo ha salido mal. No se ha podido eliminar el certificado.");
         }
     }

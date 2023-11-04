@@ -3,6 +3,8 @@ package co.edu.unisabana.recursos_humanos.controlador;
 import co.edu.unisabana.recursos_humanos.controlador.dto.Respuesta;
 import co.edu.unisabana.recursos_humanos.controlador.dto.RolDTO;
 import co.edu.unisabana.recursos_humanos.logica.LogicaRol;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +17,8 @@ public class GestionRolController {
 
     private final LogicaRol logica;
 
+    private final Logger logger = LoggerFactory.getLogger(GestionRolController.class);
+
     public GestionRolController(LogicaRol logica) {
         this.logica = logica;
     }
@@ -23,8 +27,10 @@ public class GestionRolController {
     public Respuesta crearRol(@RequestBody RolDTO rol) {
         try {
             logica.crearRol(rol);
+            logger.info("Se ha creado un nuevo ROL. ID: "+rol.getId() );
             return new Respuesta(EXITOSO,"El rol se ha creado correctamente.");
         } catch (Exception e) {
+            logger.error("Error al crear el nuevo ROL. ID: "+rol.getId());
             return new Respuesta(FALLIDO, "Algo ha salido mal. No se ha podido crear el rol");
         }
     }
@@ -43,8 +49,10 @@ public class GestionRolController {
     public Respuesta actualizarRol(@RequestBody RolDTO nuevoRol){
         try {
             logica.actualizarRol(nuevoRol.getId(), nuevoRol);
+            logger.warn("Se ha actualizado el ROL. ID: "+nuevoRol.getId());
             return new Respuesta(EXITOSO, "El rol ha sido actualizado correctamente.");
         } catch (Exception e) {
+            logger.error("Error al actualizar el ROl. ID: "+nuevoRol.getId());
             return new Respuesta(FALLIDO, "Algo ha salido mal. No se ha podido actualizar el rol.");
         }
     }
@@ -53,8 +61,10 @@ public class GestionRolController {
     public Respuesta eliminarRol(@RequestParam int id){
         try {
             logica.eliminarRol(id);
+            logger.warn("Se ha eliminado el ROL. ID: "+id);
             return new Respuesta(EXITOSO, "El rol ha sido eliminado correctamente.");
         } catch (Exception e) {
+            logger.error("Error al eliminar el ROL. ID: "+id);
             return new Respuesta(FALLIDO, "Algo ha salido mal. No se ha podido eliminar el rol.");
         }
     }

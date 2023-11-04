@@ -4,6 +4,10 @@ import co.edu.unisabana.recursos_humanos.controlador.dto.PerfilEmpleadoDTO;
 import co.edu.unisabana.recursos_humanos.controlador.dto.Respuesta;
 import co.edu.unisabana.recursos_humanos.logica.LogicaPerfil;
 import org.springframework.web.bind.annotation.*;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -14,6 +18,8 @@ public class GestionPerfilController {
     private static final String FALLIDO = "Fallido";
 
     private final LogicaPerfil logica;
+
+    private final Logger logger = LoggerFactory.getLogger(GestionCertificadoController.class);
 
     public GestionPerfilController(LogicaPerfil logica) {
         this.logica = logica;
@@ -32,11 +38,13 @@ public class GestionPerfilController {
 
 
     @PostMapping(path = "/subir")
-    public Respuesta subirRol(@RequestBody PerfilEmpleadoDTO perfil) {
+    public Respuesta subirPerfil(@RequestBody PerfilEmpleadoDTO perfil) {
         try {
+            logger.info("Se ha creado un nuevo perfil para el empleado " + perfil.getIdEmpleado() + ". ID: " + perfil.getId());
             logica.crearPerfil(perfil);
             return new Respuesta(EXITOSO,"El perfil se ha creado correctamente.");
         } catch (Exception e) {
+            logger.error("Error al crear el perfil del empleado " + perfil.getIdEmpleado() + ". ID: " + perfil.getId());
             return new Respuesta(FALLIDO, "Algo ha salido mal. No se ha podido crear el perfil");
         }
     }
@@ -44,19 +52,23 @@ public class GestionPerfilController {
     @PutMapping(path = "/actualizar")
     public Respuesta actualizarPerfil (@RequestBody PerfilEmpleadoDTO perfilNuevo){
         try {
+            logger.warn("Se ha Actualizado un nuevo perfil para el empleado " + perfilNuevo.getIdEmpleado() + ". ID: " + perfilNuevo.getId());
             logica.actualizarPerfil(perfilNuevo.getId(), perfilNuevo);
-            return new Respuesta(EXITOSO, "El perfil ha sido eliminado correctamente.");
+            return new Respuesta(EXITOSO, "El perfil ha sido actualizado correctamente.");
         } catch (Exception e){
-            return new Respuesta(FALLIDO,"Algo ha salido mal, no se ha podido eliminar el perfil.");
+            logger.error("Error al actualizar el perfil del empleado " + perfilNuevo.getIdEmpleado() + ". ID: " + perfilNuevo.getId());
+            return new Respuesta(FALLIDO,"Algo ha salido mal, no se ha podido actualizar el perfil.");
         }
     }
 
     @DeleteMapping (path = "/eliminar")
     public Respuesta eliminarPerfil (@RequestParam int id){
         try {
+            logger.info("Se ha Eliminado el perfil. ID: " + id);
             logica.eliminarPerfil(id);
             return new Respuesta(EXITOSO, "El perfil ha sido eliminado correctamente.");
         } catch (Exception e){
+            logger.error("Error al eliminar el perfil. ID: " + id);
             return new Respuesta(FALLIDO,"Algo ha salido mal, no se ha podido eliminar el perfil.");
         }
 
