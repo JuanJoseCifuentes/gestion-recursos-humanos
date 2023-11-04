@@ -1,5 +1,71 @@
-166977 [http-nio-8080-exec-3] TRACE c.e.u.r.c.GestionCertificadoController - TRACE yuhu
-166977 [http-nio-8080-exec-3] DEBUG c.e.u.r.c.GestionCertificadoController - debug yuhu
-166977 [http-nio-8080-exec-3] INFO  c.e.u.r.c.GestionCertificadoController - info yuhu
-166977 [http-nio-8080-exec-3] WARN  c.e.u.r.c.GestionCertificadoController - warning yuhu
-166977 [http-nio-8080-exec-3] ERROR c.e.u.r.c.GestionCertificadoController - error yuhu
+12352 [http-nio-auto-1-exec-1] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 1
+12543 [http-nio-auto-1-exec-2] INFO  c.e.u.r.c.GestionEmpleadoController - Se ha creado un nuevo EMPLEADO. ID: 10
+12618 [http-nio-auto-1-exec-3] INFO  c.e.u.r.c.GestionCertificadoController - Se ha creado un nuevo CERTIFICADO para el EMPLEADO ID: 10. ID: 635085
+12703 [http-nio-auto-1-exec-4] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 1
+12732 [http-nio-auto-1-exec-5] INFO  c.e.u.r.c.GestionEmpleadoController - Se ha creado un nuevo EMPLEADO. ID: 10
+12758 [http-nio-auto-1-exec-6] INFO  c.e.u.r.c.GestionCertificadoController - Se ha creado un nuevo CERTIFICADO para el EMPLEADO ID: 10. ID: 683520
+13248 [http-nio-auto-1-exec-7] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 1
+13267 [http-nio-auto-1-exec-10] INFO  c.e.u.r.c.GestionEmpleadoController - Se ha creado un nuevo EMPLEADO. ID: 10
+13290 [http-nio-auto-1-exec-9] INFO  c.e.u.r.c.GestionCertificadoController - Se ha creado un nuevo CERTIFICADO para el EMPLEADO ID: 10. ID: 715530
+13348 [http-nio-auto-1-exec-2] ERROR c.e.u.r.c.GestionCertificadoController - Error al eliminar el CERTIFICADO. ID: 351402
+13388 [http-nio-auto-1-exec-3] ERROR c.e.u.r.c.GestionCertificadoController - Error al crear un nuevo CERTIFICADO para el EMPLEADO ID: 100. ID: 491193
+13420 [http-nio-auto-1-exec-4] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 30
+13447 [http-nio-auto-1-exec-5] INFO  c.e.u.r.c.GestionEmpleadoController - Se ha creado un nuevo EMPLEADO. ID: 50
+13481 [http-nio-auto-1-exec-6] INFO  c.e.u.r.c.GestionCertificadoController - Se ha creado un nuevo CERTIFICADO para el EMPLEADO ID: 50. ID: 474194
+13553 [http-nio-auto-1-exec-7] WARN  c.e.u.r.c.GestionCertificadoController - Se ha eliminado el CERTIFICADO. ID: 474194
+13626 [http-nio-auto-1-exec-9] ERROR c.e.u.r.c.GestionEmpleadoController - Error al crear un nuevo EMPLEADO. ID: 624801
+13667 [http-nio-auto-1-exec-1] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 20
+13686 [http-nio-auto-1-exec-2] INFO  c.e.u.r.c.GestionEmpleadoController - Se ha creado un nuevo EMPLEADO. ID: 110650
+13715 [http-nio-auto-1-exec-4] WARN  c.e.u.r.c.GestionEmpleadoController - Se ha eliminado un EMPLEADO. ID: 110650
+13742 [http-nio-auto-1-exec-6] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 1
+13756 [http-nio-auto-1-exec-8] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 2
+13774 [http-nio-auto-1-exec-7] INFO  c.e.u.r.c.GestionEmpleadoController - Se ha creado un nuevo EMPLEADO. ID: 956491
+13797 [http-nio-auto-1-exec-10] WARN  c.e.u.r.c.GestionEmpleadoController - Se ha actualizado el rol de un EMPLEADO. ID: 956491, ID_Nuevo_Rol: 2
+13830 [http-nio-auto-1-exec-1] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 1
+13845 [http-nio-auto-1-exec-2] INFO  c.e.u.r.c.GestionEmpleadoController - Se ha creado un nuevo EMPLEADO. ID: 206103
+13870 [http-nio-auto-1-exec-3] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 1
+13885 [http-nio-auto-1-exec-4] INFO  c.e.u.r.c.GestionEmpleadoController - Se ha creado un nuevo EMPLEADO. ID: 90460
+13913 [http-nio-auto-1-exec-5] ERROR c.e.u.r.c.GestionEmpleadoController - Error al actualizar el rol de un EMPLEADO. ID: 90460, ID_Nuevo_Rol: 500
+13941 [http-nio-auto-1-exec-8] ERROR c.e.u.r.c.GestionEmpleadoController - Error al actualizar la informacion personal de un EMPLEADO. ID: 958278
+13968 [http-nio-auto-1-exec-7] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 1
+13982 [http-nio-auto-1-exec-10] INFO  c.e.u.r.c.GestionEmpleadoController - Se ha creado un nuevo EMPLEADO. ID: 325502
+13997 [http-nio-auto-1-exec-9] WARN  c.e.u.r.c.GestionEmpleadoController - Se ha actualizado la informacion personal de un EMPLEADO. ID: 325502
+14031 [http-nio-auto-1-exec-2] ERROR c.e.u.r.c.GestionEmpleadoController - Error al eliminar un EMPLEADO. ID: 263940
+14055 [http-nio-auto-1-exec-3] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 1
+14071 [http-nio-auto-1-exec-4] INFO  c.e.u.r.c.GestionEmpleadoController - Se ha creado un nuevo EMPLEADO. ID: 376835
+14104 [http-nio-auto-1-exec-6] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 1
+14121 [http-nio-auto-1-exec-8] INFO  c.e.u.r.c.GestionEmpleadoController - Se ha creado un nuevo EMPLEADO. ID: 974232
+14179 [http-nio-auto-1-exec-10] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 5
+14194 [http-nio-auto-1-exec-9] INFO  c.e.u.r.c.GestionEmpleadoController - Se ha creado un nuevo EMPLEADO. ID: 1245
+14209 [http-nio-auto-1-exec-1] INFO  c.e.u.r.c.GestionCertificadoController - Se ha creado un nuevo perfil para el empleado 1245. ID: 99773
+14246 [http-nio-auto-1-exec-3] INFO  c.e.u.r.c.GestionCertificadoController - Se ha Eliminado el perfil. ID: 99773
+14278 [http-nio-auto-1-exec-5] WARN  c.e.u.r.c.GestionCertificadoController - Se ha Actualizado un nuevo perfil para el empleado 1239. ID: 743661
+14282 [http-nio-auto-1-exec-5] ERROR c.e.u.r.c.GestionCertificadoController - Error al actualizar el perfil del empleado 1239. ID: 743661
+14300 [http-nio-auto-1-exec-6] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 1
+14315 [http-nio-auto-1-exec-8] INFO  c.e.u.r.c.GestionEmpleadoController - Se ha creado un nuevo EMPLEADO. ID: 1238
+14327 [http-nio-auto-1-exec-7] INFO  c.e.u.r.c.GestionCertificadoController - Se ha creado un nuevo perfil para el empleado 1238. ID: 603284
+14351 [http-nio-auto-1-exec-10] WARN  c.e.u.r.c.GestionCertificadoController - Se ha Actualizado un nuevo perfil para el empleado 1238. ID: 603284
+14397 [http-nio-auto-1-exec-1] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 1
+14414 [http-nio-auto-1-exec-2] INFO  c.e.u.r.c.GestionEmpleadoController - Se ha creado un nuevo EMPLEADO. ID: 1234
+14423 [http-nio-auto-1-exec-3] INFO  c.e.u.r.c.GestionCertificadoController - Se ha creado un nuevo perfil para el empleado 1234. ID: 953983
+14453 [http-nio-auto-1-exec-4] INFO  c.e.u.r.c.GestionCertificadoController - Se ha creado un nuevo perfil para el empleado 1235. ID: 843226
+14460 [http-nio-auto-1-exec-4] ERROR c.e.u.r.c.GestionCertificadoController - Error al crear el perfil del empleado 1235. ID: 843226
+14479 [http-nio-auto-1-exec-5] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 1
+14497 [http-nio-auto-1-exec-6] INFO  c.e.u.r.c.GestionEmpleadoController - Se ha creado un nuevo EMPLEADO. ID: 1234
+14506 [http-nio-auto-1-exec-8] INFO  c.e.u.r.c.GestionCertificadoController - Se ha creado un nuevo perfil para el empleado 1234. ID: 616734
+14546 [http-nio-auto-1-exec-10] INFO  c.e.u.r.c.GestionCertificadoController - Se ha Eliminado el perfil. ID: 637416
+14550 [http-nio-auto-1-exec-10] ERROR c.e.u.r.c.GestionCertificadoController - Error al eliminar el perfil. ID: 637416
+14573 [http-nio-auto-1-exec-9] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 1
+14591 [http-nio-auto-1-exec-1] INFO  c.e.u.r.c.GestionEmpleadoController - Se ha creado un nuevo EMPLEADO. ID: 1234
+14605 [http-nio-auto-1-exec-2] INFO  c.e.u.r.c.GestionCertificadoController - Se ha creado un nuevo perfil para el empleado 1234. ID: 534263
+14679 [http-nio-auto-1-exec-4] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 439009
+14693 [http-nio-auto-1-exec-5] WARN  c.e.u.r.c.GestionRolController - Se ha actualizado el ROL. ID: 439009
+14720 [http-nio-auto-1-exec-8] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 947112
+14741 [http-nio-auto-1-exec-10] WARN  c.e.u.r.c.GestionRolController - Se ha eliminado el ROL. ID: 947112
+14769 [http-nio-auto-1-exec-1] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 548292
+14793 [http-nio-auto-1-exec-3] ERROR c.e.u.r.c.GestionRolController - Error al eliminar el ROL. ID: 674160
+14811 [http-nio-auto-1-exec-4] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 408795
+14829 [http-nio-auto-1-exec-5] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 0
+14841 [http-nio-auto-1-exec-6] ERROR c.e.u.r.c.GestionRolController - Error al crear el nuevo ROL. ID: 0
+14862 [http-nio-auto-1-exec-8] ERROR c.e.u.r.c.GestionRolController - Error al actualizar el ROl. ID: 4
+14887 [http-nio-auto-1-exec-7] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: 510615

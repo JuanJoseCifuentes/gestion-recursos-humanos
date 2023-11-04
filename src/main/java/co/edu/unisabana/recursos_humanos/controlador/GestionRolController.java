@@ -27,10 +27,10 @@ public class GestionRolController {
     public Respuesta crearRol(@RequestBody RolDTO rol) {
         try {
             logica.crearRol(rol);
-            logger.info("Se ha creado un nuevo ROL. ID: "+rol.getId() );
+            logger.info("Se ha creado un nuevo ROL. ID: %d", rol.getId() );
             return new Respuesta(EXITOSO,"El rol se ha creado correctamente.");
         } catch (Exception e) {
-            logger.error("Error al crear el nuevo ROL. ID: "+rol.getId());
+            logger.error("Error al crear el nuevo ROL. ID: %d", rol.getId());
             return new Respuesta(FALLIDO, "Algo ha salido mal. No se ha podido crear el rol");
         }
     }
@@ -49,10 +49,10 @@ public class GestionRolController {
     public Respuesta actualizarRol(@RequestBody RolDTO nuevoRol){
         try {
             logica.actualizarRol(nuevoRol.getId(), nuevoRol);
-            logger.warn("Se ha actualizado el ROL. ID: "+nuevoRol.getId());
+            logger.warn("Se ha actualizado el ROL. ID: %d", nuevoRol.getId());
             return new Respuesta(EXITOSO, "El rol ha sido actualizado correctamente.");
         } catch (Exception e) {
-            logger.error("Error al actualizar el ROl. ID: "+nuevoRol.getId());
+            logger.error("Error al actualizar el ROl. ID: %d", nuevoRol.getId());
             return new Respuesta(FALLIDO, "Algo ha salido mal. No se ha podido actualizar el rol.");
         }
     }
@@ -61,10 +61,10 @@ public class GestionRolController {
     public Respuesta eliminarRol(@RequestParam int id){
         try {
             logica.eliminarRol(id);
-            logger.warn("Se ha eliminado el ROL. ID: "+id);
+            logger.warn("Se ha eliminado el ROL. ID: %d", id);
             return new Respuesta(EXITOSO, "El rol ha sido eliminado correctamente.");
         } catch (Exception e) {
-            logger.error("Error al eliminar el ROL. ID: "+id);
+            logger.error("Error al eliminar el ROL. ID: %d", id);
             return new Respuesta(FALLIDO, "Algo ha salido mal. No se ha podido eliminar el rol.");
         }
     }

@@ -1,0 +1,5 @@
+166977 [http-nio-8080-exec-3] TRACE c.e.u.r.c.GestionCertificadoController - TRACE yuhu
+166977 [http-nio-8080-exec-3] DEBUG c.e.u.r.c.GestionCertificadoController - debug yuhu
+166977 [http-nio-8080-exec-3] INFO  c.e.u.r.c.GestionCertificadoController - info yuhu
+166977 [http-nio-8080-exec-3] WARN  c.e.u.r.c.GestionCertificadoController - warning yuhu
+166977 [http-nio-8080-exec-3] ERROR c.e.u.r.c.GestionCertificadoController - error yuhu
