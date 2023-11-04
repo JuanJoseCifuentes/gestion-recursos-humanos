@@ -27,11 +27,6 @@ public class GestionCertificadoController {
 
     @GetMapping(path = "/buscar/todos")
     public List<CertificadoDTO> buscarCertificados() {
-        logger.trace("TRACE yuhu");
-        logger.debug("debug yuhu");
-        logger.info("info yuhu");
-        logger.warn("warning yuhu");
-        logger.error("error yuhu");
         return logica.buscarCertificadosTodos();
     }
 
@@ -44,8 +39,10 @@ public class GestionCertificadoController {
     public Respuesta subirCertificado(@RequestBody CertificadoDTO certificado) {
         try {
             logica.crearCertificado(certificado);
+            logger.info("El certificado ha sido creado exitosamente");
             return new Respuesta(EXITOSO,"El certificado se ha creado correctamente.");
         } catch (Exception e) {
+            logger.error("Algo ha salido mal, no se ha creado el certificado");
             return new Respuesta(FALLIDO, "Algo ha salido mal. No se ha podido crear el certificado");
         }
     }
@@ -54,8 +51,10 @@ public class GestionCertificadoController {
     public Respuesta eliminarCertificado(@RequestParam int id){
         try {
             logica.eliminarCertificado(id);
+            logger.info("El certificado ha sido eliminado exitosamente");
             return new Respuesta(EXITOSO, "El certificado se ha eliminado correctamente.");
         } catch (Exception e) {
+            logger.error("Algo ha salido mal, no se ha eliminado el certificado");
             return new Respuesta(FALLIDO, "Algo ha salido mal. No se ha podido eliminar el certificado.");
         }
     }
