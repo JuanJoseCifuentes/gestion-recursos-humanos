@@ -41,16 +41,14 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("mysql:mysql-connector-java:8.0.30")
+    implementation("org.springframework.boot:spring-boot-starter-logging")
+    implementation("org.slf4j:slf4j-api:1.7.32")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("com.h2database:h2:2.2.220")
 
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
-
-    implementation("org.springframework.boot:spring-boot-starter-logging")
-    implementation("org.slf4j:slf4j-api:1.7.32")
-
 }
 
 tasks.withType<Test> {
