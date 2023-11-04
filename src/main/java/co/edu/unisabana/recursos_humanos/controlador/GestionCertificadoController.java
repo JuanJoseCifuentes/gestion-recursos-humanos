@@ -3,7 +3,11 @@ package co.edu.unisabana.recursos_humanos.controlador;
 import co.edu.unisabana.recursos_humanos.controlador.dto.CertificadoDTO;
 import co.edu.unisabana.recursos_humanos.controlador.dto.Respuesta;
 import co.edu.unisabana.recursos_humanos.logica.LogicaCertificado;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
+import org.slf4j.Logger;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -15,12 +19,19 @@ public class GestionCertificadoController {
 
     private final LogicaCertificado logica;
 
+    private final Logger logger = LoggerFactory.getLogger(GestionCertificadoController.class);
+
     public GestionCertificadoController(LogicaCertificado logica) {
         this.logica = logica;
     }
 
     @GetMapping(path = "/buscar/todos")
     public List<CertificadoDTO> buscarCertificados() {
+        logger.trace("TRACE yuhu");
+        logger.debug("debug yuhu");
+        logger.info("info yuhu");
+        logger.warn("warning yuhu");
+        logger.error("error yuhu");
         return logica.buscarCertificadosTodos();
     }
 

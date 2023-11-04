@@ -46,8 +46,11 @@ dependencies {
     testImplementation("com.h2database:h2:2.2.220")
 
     compileOnly("org.projectlombok:lombok")
-
     annotationProcessor("org.projectlombok:lombok")
+
+    implementation("org.springframework.boot:spring-boot-starter-logging")
+    implementation("org.slf4j:slf4j-api:1.7.32")
+
 }
 
 tasks.withType<Test> {
