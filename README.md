@@ -1,12 +1,9 @@
 ## Informacion del equipo
 
 Integrantes:
-
--Tomas Candelo Montoya
-
--Juan Jose Cifuentes Cuellar
-
--Gabriel Jimenez Mosquera
+- Tomas Candelo Montoya
+- Juan Jose Cifuentes Cuellar
+- Gabriel Jimenez Mosquera
 
 ## Funcionalidad del proyecto
 
