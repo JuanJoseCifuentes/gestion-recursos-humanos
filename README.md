@@ -17,18 +17,41 @@ Utilice el comando ``docker-compose up --build`` para levantar el proyecto desde
 
 Si desea levantar el proyecto desde IntelliJ, utilice primero el comando 
 ```
-docker run --name rh_db -d -p 8091:3306 -e MYSQL_DATABASE=gestion_rh_rest -e MYSQL_USER=manager_rh_1 -e MYSQL_PASSWORD=123456789 -e MYSQL_ROOT_PASSWORD=1234 mysql
+docker run --name rh_db -d -p 8091:3306 -e MYSQL_DATABASE=gestion_rh_rest -e MYSQL_USER=manager_rh_1 -e MYSQL_PASSWORD=123456789 -e MYSQL_ROOT_PASSWORD=1234 mysql
 ```
 y a continuación ejecute la aplicación desde el perfil predeterminado.
 _____________
 ## Estilos y patrones arquitectónicos
 
-### Estilo arquitectónico
+### Estilo arquitectónico - Monolítico
 
+El presente proyecto se trata claramente de una aplicación con estilo **monolítico**. Esto se hace obvio al considerar la funcionalidad y construcción del proyecto, que en todo momento demuestra que ha sido pensado como una única unidad cohesiva de código, y funciona como tal al momento de desplegarse. Para respaldar esta afirmación, repasaremos algunas de las características de este estilo:
 
+- Al compilarse, se empaqueta como una sola pieza, facilitando su despliegue y observabilidad. En nuestro caso, este producto final es el único archivo JAR que se genera y que contiene todo el proyecto.
 
-### Patrón arquitectónico
+![Resultado del build, una unica pieza](/images/project_build.png)
 
+- Contiene toda la funcionalidad requerida sin necesidad de acceder o desplegar otras aplicaciones. Nuestro proyecto maneja todas sus funcionalidades sin tener que acceder o realizar peticiones a cualquier otro aplicativo, como se puede ver en el siguiente ejemplo:
+
+![Todas la lógica ocurre dentro del propio proyecto](/images/logica_autocontenida.png)
+
+- Realiza todas sus operaciones por si mismo de punta a punta. Desde la primera interacción con el usuario, hasta el retorno de una respuesta, la información viaja únicamente a través de los procesos de nuestra aplicación.
+
+![La información fluye solo dentro del proyecto](/images/flujo_proyecto.png)
+
+En resumen, nuestro proyecto tiene un estilo monolítico, que no nos representa ningún riesgo ni contratiempo debido a su tamaño y alcance tan pequeño.
+
+### Patrón arquitectónico - MVC
+
+El patrón que más resalta en nuestro proyecto es el patrón arquitectónico de **MVC (Model - View - Controller)**. Esto es claro principalmente en la separación clara que existe en nuestro proyecto de los controladores, la lógica subyacente, y la representación de la información, que se da de la siguiente manera:
+
+- **Controlador:** Es nuestro conjunto de endpoints encontrados en el paquete *controlador*. Son quienes reciben las peticiones http de los usuarios y se encargan de invocar funciones en nuestro modelo como respuesta. A su vez, es quien se encarga de retornar la información necesaria para que el componente de vista pueda relatarla al usuario.
+
+- **Modelo:** En nuestro caso, el modelo se compone tanto de los repositorios encontrados en el paquete *db*, como de las clases encontradas en el paquete *logica*. Utilizando estas clases, es capaz de representar la información de la base de datos con la que opera el sistema, y también gestionar los accesos y consultas a la base de datos donde se encuentran.
+
+- **Vista:** Para finalizar, la vista de nuestro proyecto sería el frontend correspondiente que visualiza para el usuario la sección de modelo de una forma adecuada para la interacción.
+
+En definitiva, nuestro proyecto ha utilizado este patrón para organizar la comunicación de la información a lo largo de sus diferentes niveles, además de facilitar su desarrollo y mantenimiento mediante la separación de conceptos.
 
 _______________
 ## Responsabilidad ética
