@@ -20,4 +20,20 @@ Si desea levantar el proyecto desde IntelliJ, utilice primero el comando
 docker run --name rh_db -d -p 8091:3306 -e MYSQL_DATABASE=gestion_rh_rest -e MYSQL_USER=manager_rh_1 -e MYSQL_PASSWORD=123456789 -e MYSQL_ROOT_PASSWORD=1234 mysql
 ```
 y a continuación ejecute la aplicación desde el perfil predeterminado.
+_____________
+## Estilos y patrones arquitectónicos
+
+### Estilo arquitectónico
+
+
+
+### Patrón arquitectónico
+
+
+_______________
+## Responsabilidad ética
+
+Esta aplicación, tiene como funcionalidad el manejo del registro de empleados de una empresa, como responsabilidades, se debería tener suma precaución con el uso de la aplicación, ya que un dato mal ingresado en el empleado, en un perfil o en un certificado puede generar ruido y mala información dentro de empresa. Se recomienda que aquellos datos que se ingresen sean totalmente verídicos, y previamente verificados.
+
+De igual manera, esta aplicación debería ser manejada únicamente por el personal de recursos humanos, ya que, al contar con la posibilidad de eliminar empleados se pueden presentar situaciones donde alguien, con una intención deshonesta elimine a algún empleado que no haya sido formalmente retirado de la empresa, lo cual puede generar inconvenientes dentro de misma empresa por distintos factores internos. También, al tener datos sensibles como lo son la dirección o el teléfono personal, para evitar posibles intentos de fraude telefónico, o extorsión como acoso físico, se sigue, y se vuelve a recomendar que la aplicación sea utilizada solo por personal autorizado para realizar el monitoreo y control del área de recursos humanos.
 
