@@ -1,0 +1,2 @@
+7682186 [http-nio-8080-exec-5] INFO  c.e.u.r.c.GestionCertificadoController - Se ha creado un nuevo CERTIFICADO para el EMPLEADO ID: %d
+8158270 [http-nio-8080-exec-9] INFO  c.e.u.r.c.GestionPerfilController - Se ha creado un nuevo perfil para el empleado %d

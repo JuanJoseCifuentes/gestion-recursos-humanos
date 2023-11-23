@@ -40,7 +40,7 @@ public class EmpleadoDB {
     @Column(name = "Fecha_actualizacion")
     private LocalDateTime fechaActualizacion;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "id_rol", referencedColumnName = "ID")
     private RolDB rol;
 
