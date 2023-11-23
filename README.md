@@ -21,6 +21,14 @@ docker run --name rh_db -d -p 8091:3306 -e MYSQL_DATABASE=gestion_rh_rest -e MYS
 ```
 y a continuación ejecute la aplicación desde el perfil predeterminado.
 _____________
+## Requisitos no funcionales
+
+- **Portabilidad:** Gracias a la ventaja de utilizar Docker, nuestro aplicativo es fácilmente desplegable en cualquier dispositivo que tenga Docker instalado, si bien esto implicaría que la base de datos tendría que iniciarse manualmente por medios separados.
+- **Usabilidad:** Debido a la nomenclatura consistente a lo largo de los diferentes endpoints y a la simpleza de las peticiones rest, que en el más complicado de los casos tan solo pide del usuario un JSON (nomenclatura estándar para el ambiente de tecnología) y una autenticación básica, nuestra API es fácil de usar y presentará una experiencia simple y satisfactoria a las personas que trabajen con ella.
+- **Seguridad:** Si bien la encriptación no es la más sofisticada de todas, nuestra API ofrece seguridad ante peticiones no autorizadas que pudieran llegar por otros medios ajenos al manager para quien la aplicación está diseñada.
+- **Mantenibilidad:** Gracias al buen manejo de organización en carpetas y a la documentación adecuada, sería fácil tanto para nosotros como para posibles nuevos desarrolladores seguir implementando nuevas funcionalidades en el proyecto y corregir los posibles errores que se presenten eventualmente.
+- **Escalabilidad:** Si bien el proyecto actual no lo tiene implementado, se podría, utilizando un aplicativo intermedio sencillo de Load Balancer como Eureka, podríamos tener múltiples instancias del proyecto levantadas en diferentes servidores para asegurar que el proyecto pudiera lidiar con cargas de trabajo especialmente pesadas. 
+_____________
 ## Estilos y patrones arquitectónicos
 
 ### Estilo arquitectónico - Monolítico
