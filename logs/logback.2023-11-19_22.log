@@ -1,0 +1,4 @@
+696246 [http-nio-8080-exec-2] ERROR c.e.u.r.c.GestionEmpleadoController - Error al crear un nuevo EMPLEADO. ID: %d
+753004 [http-nio-8080-exec-6] ERROR c.e.u.r.c.GestionEmpleadoController - Error al crear un nuevo EMPLEADO. ID: %d
+758813 [http-nio-8080-exec-5] INFO  c.e.u.r.c.GestionRolController - Se ha creado un nuevo ROL. ID: %d
+763588 [http-nio-8080-exec-7] INFO  c.e.u.r.c.GestionEmpleadoController - Se ha creado un nuevo EMPLEADO. ID: %d

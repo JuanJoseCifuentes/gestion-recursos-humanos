@@ -17,7 +17,7 @@ public class CertificadoDB {
 
     @JsonIgnore
     @JoinColumn(name = "id_empleado", referencedColumnName = "ID")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     private EmpleadoDB empleado;
 
     @Column
