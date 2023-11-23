@@ -14,7 +14,7 @@ public class PerfilEmpleadoDB {
     @Column
     private int id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "id_empleado", referencedColumnName = "ID")
     private EmpleadoDB empleado;
 
